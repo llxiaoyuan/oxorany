@@ -9,6 +9,7 @@
 * 通过`__TIME__`宏动态产生密钥
 * 破坏堆栈以对抗`IDA` `F5`
 * 基于堆栈变量的不透明谓词
+* 模糊数据长度
 
 <br />
 
@@ -81,6 +82,12 @@ int main() {
 > 我们在无法到达的基本快内加入非法的栈操作使得`IDA`的栈帧分析失败，以对抗`F5`
 
 ![image](https://user-images.githubusercontent.com/36320938/132544334-27a63575-35b0-4b52-ac12-9079a984c2bf.png)
+
+<br />
+
+> 我们在将数据按16字节对齐并加上一定的随机值以模糊数据长度，这可能会浪费一点空间
+
+![image](https://user-images.githubusercontent.com/36320938/132553464-d8ef7b64-c4a7-4a36-9250-51062751a8d1.png)
 
 <br />
 
