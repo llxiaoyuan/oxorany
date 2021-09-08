@@ -1,16 +1,16 @@
 # oxorany
-## any constant encryption with obfuscation in compile time
+## A heavily obfuscated c++14 compile time any constant encryption.
 
-### Features
-* any constant encryption with obfuscation in `compile time`
-* bogus control flow in decryption algorithm 
-* unique control flow for each encryption algorithm by `compiler optimization`
-* unique key for each encryption algorithm by `__COUNTER__` macro
-* generate dynamic key by `__TIME__` macro
-* stack frame destroy for anti `IDA` `F5`
-* opaque predicate on the stack
+### 特性
+* 编译时的任意常量的混淆加密
+* 带有伪造控制流功能的解密算法
+* 通过编译优化为每一个加密算法生成唯一的控制流
+* 通过`__COUNTER__` 宏为每一个加密算法生成唯一的密钥
+* 通过`__TIME__`宏动态产生密钥
+* 破坏堆栈以对抗`IDA` `F5`
+* 基于堆栈变量的不透明谓词
 
-### Usage
+### 使用
 ```C++
 #include <iostream>
 #include "oxorany.h"
@@ -46,12 +46,12 @@ int main() {
 
 <br />
 
-### CFG in IDA
+### IDA中的控制流程图
 ![image](https://user-images.githubusercontent.com/36320938/132527280-34c443b8-40b5-4b76-a35b-2629a1df087c.png)
 
 <br />
 
-### Implement
+### 实现
 > 受到ollvm中伪造控制流功能的启发，我们创建了两个全局变量`x`、`y`，并赋初值为`0`，作为实现不透明谓词的基础
 
 ![image](https://user-images.githubusercontent.com/36320938/132540802-06b63425-acc8-4da8-b9d7-de5886587f42.png)
@@ -83,6 +83,12 @@ int main() {
 <br />
 
 > 综上，在`oxorany`的帮助下，任何单纯依赖`IDA`静态分析的反向工程将变得不切实际
+
+<br />
+
+### 参考
+[高度矢量化的 c++17 编译时字符串加密](https://github.com/JustasMasiulis/xorstr)
+
 
 
 
