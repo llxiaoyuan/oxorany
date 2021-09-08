@@ -2,8 +2,8 @@
 ## any constant encryption with obfuscation in compile time
 
 ### Features
-* any constant encryption
-* bogus control flow in decryption algorithm
+* any constant encryption with `C++14`
+* bogus control flow in decryption algorithm 
 * unique control flow for each encryption algorithm
 * unique key for each encryption algorithm
 * generate dynamic key by `__TIME__` macro
