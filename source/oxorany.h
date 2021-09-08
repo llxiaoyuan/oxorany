@@ -1,3 +1,12 @@
+/*
+	any constant encryption with obfuscation in compile time
+	bogus control flow in decryption algorithm
+	unique control flow for each encryption algorithm by compiler optimization
+	unique key for each encryption algorithm by __COUNTER__ macro
+	generate dynamic key by __TIME__ macro
+	stack frame destroy for anti IDA F5
+	opaque predicate on the stack
+*/
 #pragma once
 #include <cstddef>
 #include <utility>
@@ -563,14 +572,14 @@ namespace _oxor_any_
 				}
 				else {
 					//unreachable
-					//Decompilation failure:
+					//Ooops, Decompilation failure:
 					//401000: stack frame is too big
 					return reinterpret_cast<return_type>(buffer + ((key * __COUNTER__) % 0x400000 + 0x1400000));
 				}
 			}
 			else {
 				//unreachable
-				//Decompilation failure:
+				//Ooops, Decompilation failure:
 				//401000: stack frame is too big
 				return reinterpret_cast<return_type>(buffer + ((key * __COUNTER__) % 0x1400000 + 0x400000));
 			}
