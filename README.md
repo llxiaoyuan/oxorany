@@ -4,7 +4,7 @@
 ### Features
 * any constant encryption with obfuscation in `compile time`
 * bogus control flow in decryption algorithm 
-* unique control flow for each encryption algorithm
+* unique control flow for each encryption algorithm by `compiler optimization`
 * unique key for each encryption algorithm by `__COUNTER__` macro
 * generate dynamic key by `__TIME__` macro
 * stack frame destroy for anti `IDA` `F5`
