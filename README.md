@@ -10,6 +10,8 @@
 * 破坏堆栈以对抗`IDA` `F5`
 * 基于堆栈变量的不透明谓词
 
+<br />
+
 ### 使用
 ```C++
 #include <iostream>
@@ -88,6 +90,11 @@ int main() {
 
 ### 参考
 [高度矢量化的 c++17 编译时字符串加密](https://github.com/JustasMasiulis/xorstr)
+
+<br />
+
+### Github
+https://github.com/llxiaoyuan/oxorany
 
 
 
