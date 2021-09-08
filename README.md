@@ -1,2 +1,2 @@
 # oxorany
-constant encryption in compile time
+any constant encryption in compile time
