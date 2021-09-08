@@ -65,9 +65,11 @@ int main() {
 
 ![image](https://user-images.githubusercontent.com/36320938/132543102-c7c59806-6f34-4f60-b5cf-59abdfa79048.png)
 
-> 我们在无法到达的基本快内加入非法的堆栈操作使得商业反编译器`IDA`的栈帧分析失败，以对抗`F5`
+> 我们在无法到达的基本快内加入非法的栈操作使得`IDA`的栈帧分析失败，以对抗`F5`
 
 ![image](https://user-images.githubusercontent.com/36320938/132544334-27a63575-35b0-4b52-ac12-9079a984c2bf.png)
+
+> 综上，在`oxorany`的帮助下，依赖`IDA`静态分析将变得不切实际
 
 
 
