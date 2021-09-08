@@ -6,7 +6,8 @@
 * bogus control flow in decryption algorithm
 * unique control flow for each encryption algorithm
 * unique key for each encryption algorithm
-* stack frame destroy for anti IDA F5
+* generate dynamic key by `__TIME__` macro
+* stack frame destroy for anti `IDA` `F5`
 * opaque predicate on the stack
 ### Usage
 ```C++
