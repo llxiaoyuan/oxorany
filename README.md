@@ -2,13 +2,15 @@
 ## any constant encryption with obfuscation in compile time
 
 ### Features
-* any constant encryption with `C++14`
+* any constant encryption with obfuscation in `compile time`
 * bogus control flow in decryption algorithm 
 * unique control flow for each encryption algorithm
-* unique key for each encryption algorithm
+* unique key for each encryption algorithm by `__COUNTER__` macro
 * generate dynamic key by `__TIME__` macro
 * stack frame destroy for anti `IDA` `F5`
 * opaque predicate on the stack
+
+
 ### Usage
 ```C++
 #include <iostream>
@@ -42,6 +44,7 @@ int main() {
 	return oxorany(0);
 }
 ```
+
 
 ### CFG in IDA
 ![image](https://user-images.githubusercontent.com/36320938/132527280-34c443b8-40b5-4b76-a35b-2629a1df087c.png)
