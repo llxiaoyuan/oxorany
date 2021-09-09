@@ -7,21 +7,25 @@
 int main() {
 	int a = 0, b = 0, c = 0;
 	while (true) {
-		VMProtectBeginVirtualization("VMProtectBeginVirtualization");
+		VMProtectBegin("VMProtectBegin");
 		a += 10;
 		b += 100;
 		c = a + b;
-		printf("%d %d %d\n", a, b, c);
 		VMProtectEnd();
+		printf("%d %d %d\n", a, b, c);
 		Sleep(1000);
 	}
 	return 0;
 }
 ```
 
+> 关闭随机基址
+
+![image](https://user-images.githubusercontent.com/36320938/132643253-6ea66c4b-398c-4a7c-a883-5c7e5999eb27.png)
+
 > 编译后的代码如下
 
-![image](https://user-images.githubusercontent.com/36320938/132635534-533e2510-e01b-4fbc-97b4-e5f753996378.png)
+![image](https://user-images.githubusercontent.com/36320938/132649596-96600ecc-fb86-4310-99e8-6863e88ebd8f.png)
 
 > 使用`VMProtect`的默认选项对`exe`进行`编译`
 
