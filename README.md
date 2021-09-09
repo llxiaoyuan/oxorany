@@ -74,7 +74,7 @@ int main() {
 
 `不透明谓词`可以理解为`“无法确定结果的判断”`，词语本身并没有包含结果必为真或者必为假的含义，只是在这里使用了结果必为真的条件进行混淆。
 
-代码中的rand() % 2 == 0实际上也是一个不透明谓词，因为我们无法确定它的结果
+代码中的`rand() % 2 == 0`实际上也是一个不透明谓词，因为我们无法确定它的结果
 ```C++
 #include <stdio.h>
 #include <stdlib.h>
@@ -89,7 +89,11 @@ int main() {
 	}
 	return 0;
 }
+```
 
+`ollvm`中的实现
+
+```C++
 // Before :
 // 	         	     entry
 //      		       |
@@ -116,6 +120,11 @@ int main() {
 // 	            |   |   Altered   |<--!
 // 	            |   |_____________|
 // 	            |__________|
+//
+//  * The results of these terminator's branch's conditions are always true, but these predicates are
+//    opacificated. For this, we declare two global values: x and y, and replace the FCMP_TRUE
+//    predicate with (y < 10 || x * (x + 1) % 2 == 0) (this could be improved, as the global
+//    values give a hint on where are the opaque predicates)
 ```
 
 
