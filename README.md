@@ -65,6 +65,23 @@ int main() {
 
 <br />
 
+### 编译优化测试
+
+```C++
+#include "oxorany.h"
+int main() {
+	return oxorany(0);
+}
+```
+
+<br />
+
+### 多次编译后IDA中的控制流程图
+
+![image](https://user-images.githubusercontent.com/36320938/132721095-7ef48f99-37ef-407e-bf14-0ba3e72f1e25.png)
+
+<br />
+
 ### 不透明谓词
 
 > 不透明：`opaque`  
