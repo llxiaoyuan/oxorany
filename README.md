@@ -74,7 +74,7 @@ int main() {
 
 `不透明谓词`可以理解为`“无法确定结果的判断”`，词语本身并没有包含结果必为真或者必为假的含义，只是在这里使用了结果必为真的条件进行混淆。
 
-代码中的`rand() % 2 == 0`实际上也是一个不透明谓词，因为我们无法确定它的结果
+代码中的`rand() % 2 == 0`实际上也是一个不透明谓词，因为我们无法确定它的结果，所以就无法确实程序是输出`hello`还是输出`world`
 ```C++
 #include <stdio.h>
 #include <stdlib.h>
@@ -91,7 +91,31 @@ int main() {
 }
 ```
 
-`ollvm`中的实现
+但是换一种情况，这里我们创建了一个全局变量`zeor`，并赋初值为`0`，不去修改`zeor`的值或者在保证谓词结果恒定的情况下进行合理的修改，那么谓词`zeor < 1`就是恒成立的，同时又由于全局变量的天然的不透明性，编译器不会进行优化，所以我们就增加一个伪造的控制流，我称之为`无中seng有`。我们可以在`不可达`的基本块内加入任意代码，这里我们添加了一个典中典`99乘法表`作为示例，我称之为`暗度ceng仓`。
+
+```C++
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+int zeor = 0;
+int main() {
+	if (zeor < 1) {
+		printf("hello\n");
+	}
+	else {
+		//unreachable
+		for (int i = 1; i <= 9; i++) {
+			for (int j = 1; j <= 9; j++) {
+				printf("%d*%d=%2d\t", i, j, i * j);
+			}
+		    	printf("\n");
+		}
+	}
+	return 0;
+}
+```
+
+这里`copy`一下`ollvm`中的注释
 
 ```C++
 // Before :
@@ -127,6 +151,31 @@ int main() {
 //    values give a hint on where are the opaque predicates)
 ```
 
+将我们上面的代码稍作调整，以展示`ollvm`的实现
+
+```C++
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+int x = 0;
+int y = 0;
+int main() {
+	if (y < 10 || x * (x + 1) % 2 == 0) {
+		printf("hello\n");
+	}
+	else {
+		//unreachable
+        	for (int i = 1; i <= 9; i++) {
+			for (int j = 1; j <= 9; j++) {
+                		printf("%d*%d=%2d\t", i, j, i * j);
+			}
+            		printf("\n");
+        	}
+	}
+	return 0;
+}
+```
+
 
 
 ### 实现
@@ -141,7 +190,7 @@ int main() {
 
 <br />
 
-> 我们在函数的很多位置创建了`label`，使用`stack_x`、`stack_y`进行恒为真的判断进行混淆，在无法到达的基本快内添加`goto label`以尽可能得对基本块进行拆分。我们在多处对解密后的数据`decrypted`使用错误的`key`进行解密，使得真实的`key`在众多的错误的`key`中难以被识别
+> 我们在函数的很多位置创建了`label`，使用`stack_x`、`stack_y`进行恒为真的判断进行混淆，在无法到达的基本快内添加`goto label`以尽可能得对基本块进行拆分。我们在多处对解密后的数据`decrypted`使用错误的`key`进行解密，使得真实的`key`在众多的错误的`key`中难以被识别，`乱key渐欲迷人眼`
 
 ![image](https://user-images.githubusercontent.com/36320938/132542465-c9495bde-c34f-468b-ae0f-b9ab79959bba.png)
 
@@ -171,7 +220,7 @@ int main() {
 
 <br />
 
-> 综上，在`oxorany`的帮助下，任何单纯依赖`IDA`静态分析的反向工程将变得不切实际
+> 综上，在`oxorany`的帮助下，依赖`IDA`静态分析的反向工程将变得艰难而又困苦
 
 <br />
 
