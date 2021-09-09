@@ -1,6 +1,12 @@
 # oxorany
 ## A heavily obfuscated c++14 compile time any constant encryption.
 
+### 介绍
+
+> 我们综合了开源项目`ollvm`、`xorstr`一些实现思路，以及`c++14`标准中新加入的`constexpr`关键字和一些模板的知识，完成了编译时的任意常量的混淆加密，所支持的数据类型基本涵盖了`C++`的全部类型的常量，`字符串`、`宏`、`枚举`、`整数`、`浮点`等已知的数据类型
+
+<br />
+
 ### 特性
 * 编译时的任意常量的混淆加密
 * 带有伪造控制流功能的解密算法
@@ -12,6 +18,7 @@
 * 模糊数据长度
 * 由于解密算法的大部分代码不会被执行，所以对于效率的影响并不会特别大
 * 解密算法的复杂度仍有提升空间
+* 因为`C++`中常量的`隐式转换`特性，某些常量可能需要强制类型转换
 
 <br />
 
@@ -98,13 +105,10 @@ int main() {
 <br />
 
 ### 参考
-[高度矢量化的 c++17 编译时字符串加密](https://github.com/JustasMasiulis/xorstr)
++ [PLCT实验室维护的ollvm分支](https://github.com/isrc-cas/flounder)
++ [高度矢量化的 c++17 编译时字符串加密](https://github.com/JustasMasiulis/xorstr)
 
 <br />
 
 ### Github
 https://github.com/llxiaoyuan/oxorany
-
-
-
-
