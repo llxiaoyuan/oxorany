@@ -11,8 +11,8 @@
 * 编译时的任意常量的混淆加密
 * 带有`伪造控制流`功能的解密算法
 * 通过`编译优化`为每一个加密算法生成唯一的控制流
-* 通过`__COUNTER__` 宏为每一个加密算法生成唯一的密钥
-* 通过`__TIME__`宏动态产生密钥
+* 通过`__COUNTER__` 宏为每一个加密算法生成唯一的`key`
+* 通过`__TIME__`宏动态产生`key`
 * 破坏堆栈以对抗`IDA` `F5`
 * 基于堆栈变量的`不透明谓词`
 * 模糊数据长度
@@ -156,6 +156,8 @@ int main() {
 //    values give a hint on where are the opaque predicates)
 ```
 
+<br />
+
 `ollvm`中全局`x`、`y`的定义
 
 ```C++
@@ -166,6 +168,8 @@ int main() {
           GlobalValue::CommonLinkage, (Constant * )y1,
           *varY);
 ```
+
+<br />
 
 `ollvm`中不透明谓词`y < 10 || x * (x + 1) % 2 == 0`的实现，由`Instruction::Sub`可知，虽然注释是`x + 1`，但实际使用的确实`x - 1`，`问题不大，殊途同归`
 
@@ -261,6 +265,12 @@ int main() {
 > 我们在将`xor`替换为一种更加复杂的实现方式，以提高逆向的难度
 
 ![image](https://user-images.githubusercontent.com/36320938/132621379-81796348-23d1-4549-99b7-55e4aa87f0eb.png)
+
+<br />
+
+> 使用`__TIME__`宏实现每一次编译都不一样的`key`
+
+![image](https://user-images.githubusercontent.com/36320938/132704045-7510c6df-f2db-4e9b-99b0-ca80aa871aed.png)
 
 <br />
 
