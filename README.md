@@ -156,6 +156,39 @@ int main() {
 //    values give a hint on where are the opaque predicates)
 ```
 
+```C++
+      GlobalVariable 	* x = new GlobalVariable(M, Type::getInt32Ty(M.getContext()), false,
+          GlobalValue::CommonLinkage, (Constant * )x1,
+          *varX);
+      GlobalVariable 	* y = new GlobalVariable(M, Type::getInt32Ty(M.getContext()), false,
+          GlobalValue::CommonLinkage, (Constant * )y1,
+          *varY);
+```
+
+```C++
+        //if y < 10 || x*(x+1) % 2 == 0
+        opX = new LoadInst ((Value *)x, "", (*i));
+        opY = new LoadInst ((Value *)y, "", (*i));
+
+        op = BinaryOperator::Create(Instruction::Sub, (Value *)opX,
+            ConstantInt::get(Type::getInt32Ty(M.getContext()), 1,
+              false), "", (*i));
+        op1 = BinaryOperator::Create(Instruction::Mul, (Value *)opX, op, "", (*i));
+        op = BinaryOperator::Create(Instruction::URem, op1,
+            ConstantInt::get(Type::getInt32Ty(M.getContext()), 2,
+              false), "", (*i));
+        condition = new ICmpInst((*i), ICmpInst::ICMP_EQ, op,
+            ConstantInt::get(Type::getInt32Ty(M.getContext()), 0,
+              false));
+        condition2 = new ICmpInst((*i), ICmpInst::ICMP_SLT, opY,
+            ConstantInt::get(Type::getInt32Ty(M.getContext()), 10,
+              false));
+        op1 = BinaryOperator::Create(Instruction::Or, (Value *)condition,
+            (Value *)condition2, "", (*i));
+
+```
+
+
 <br />
 
 > 将我们上面的代码稍作调整，以展示`ollvm`的实现，这里的`x * (x + 1) % 2 == 0`，以为`x`和`x + 1`，必然是一个奇数一个偶数，根据奇偶性的运算法则可以得知`x * (x + 1)`的结果必然是偶数，所以`% 2 == 0`的判断将必然成立
