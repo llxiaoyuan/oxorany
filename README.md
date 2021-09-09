@@ -74,6 +74,50 @@ int main() {
 
 `不透明谓词`可以理解为`“无法确定结果的判断”`，词语本身并没有包含结果必为真或者必为假的含义，只是在这里使用了结果必为真的条件进行混淆。
 
+代码中的rand() % 2 == 0实际上也是一个不透明谓词，因为我们无法确定它的结果
+```C++
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+int main() {
+	srand((unsigned int)time(NULL));
+	if (rand() % 2 == 0) {
+		printf("hello\n");
+	}
+	else {
+		printf("world\n");
+	}
+	return 0;
+}
+
+// Before :
+// 	         	     entry
+//      		       |
+//  	    	  	 ______v______
+//   	    		|   Original  |
+//   	    		|_____________|
+//             		       |
+// 		       	       v
+//		             return
+//
+// After :
+//           		     entry
+//             		       |
+//            		   ____v_____
+//      		  |condition*| (false)
+//           		  |__________|----+
+//           		 (true)|          |
+//             		       |          |
+//           		 ______v______    |
+// 	            +-->|   Original* |   |
+// 	            |   |_____________| (true)
+// 	            |   (false)|    !-----------> return
+// 	            |    ______v______    |
+// 	            |   |   Altered   |<--!
+// 	            |   |_____________|
+// 	            |__________|
+```
+
 
 
 ### 实现
