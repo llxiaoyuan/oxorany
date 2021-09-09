@@ -120,7 +120,7 @@ int main() {
 
 <br />
 
-> 这里`copy`一下`ollvm`中的注释，`ASCII Picasso`
+> 这里`copy`一下`ollvm`中的代码，`ASCII Picasso`
 
 ```C++
 // Before :
@@ -156,6 +156,8 @@ int main() {
 //    values give a hint on where are the opaque predicates)
 ```
 
+`ollvm`中全局`x`、`y`的定义
+
 ```C++
       GlobalVariable 	* x = new GlobalVariable(M, Type::getInt32Ty(M.getContext()), false,
           GlobalValue::CommonLinkage, (Constant * )x1,
@@ -164,6 +166,8 @@ int main() {
           GlobalValue::CommonLinkage, (Constant * )y1,
           *varY);
 ```
+
+`ollvm`中不透明谓词`y < 10 || x * (x + 1) % 2 == 0`的实现，虽然注释是`x + 1`，但实际使用的确实`x - 1`，`问题不大，殊途同归`
 
 ```C++
         //if y < 10 || x*(x+1) % 2 == 0
