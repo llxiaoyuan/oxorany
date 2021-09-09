@@ -60,6 +60,7 @@ int main() {
 <br />
 
 ### IDA中的控制流程图
+
 ![image](https://user-images.githubusercontent.com/36320938/132527280-34c443b8-40b5-4b76-a35b-2629a1df087c.png)
 
 <br />
@@ -228,6 +229,7 @@ int main() {
 
 ### 实现
 > 受到`ollvm`中`伪造控制流`功能的启发，我们创建了两个全局变量`x`、`y`，并赋初值为`0`，作为实现不透明谓词的基础
+
 ![image](https://user-images.githubusercontent.com/36320938/132540802-06b63425-acc8-4da8-b9d7-de5886587f42.png)
 
 <br />
