@@ -274,6 +274,12 @@ int main() {
 
 <br />
 
+> 带有范围限制的随机数生成器，使得`不透明谓词`相似于正常的`谓词`
+
+![image](https://user-images.githubusercontent.com/36320938/132704535-10761dda-61e7-47b3-95a4-e2439d483532.png)
+
+<br />
+
 > 综上所述，在`oxorany`的帮助下，软件的安全性将会得到进一步的提高
 
 <br />
