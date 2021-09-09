@@ -64,9 +64,15 @@ int main() {
 
 <br />
 
+### 不透明谓词
+不透明：opaque
+★来自拉丁语opacus,有阴影的，黑暗的，模糊的。
+谓词：predicate
+★来自拉丁语praedicare,预测，断言，声称，来自prae,在前，早于，dicare,说，声称，词源同diction.并引申诸相关词义。
+
+
 ### 实现
 > 受到`ollvm`中`伪造控制流`功能的启发，我们创建了两个全局变量`x`、`y`，并赋初值为`0`，作为实现不透明谓词的基础
-
 ![image](https://user-images.githubusercontent.com/36320938/132540802-06b63425-acc8-4da8-b9d7-de5886587f42.png)
 
 <br />
