@@ -7,9 +7,12 @@
 	stack frame destroy for anti IDA F5
 	opaque predicate on the stack
 */
-#pragma once
+#ifndef OXORANY_H
+#define OXORANY_H
+
 #include <cstddef>
 #include <utility>
+#include <cstdint>
 
 #if _WIN32 || _WIN64
 #if _WIN64
@@ -64,7 +67,7 @@ namespace _oxor_any_
 		static constexpr uint32_t value = random_constant_32<z, n - 1>::value;
 	};
 
-	template<size_t s>
+	template<uint32_t s>
 	class random_constant_32<s, 0>
 	{
 	public:
@@ -81,7 +84,7 @@ namespace _oxor_any_
 		static constexpr uint64_t value = random_constant_64<z, n - 1>::value;
 	};
 
-	template<size_t s>
+	template<uint64_t s>
 	class random_constant_64<s, 0>
 	{
 	public:
@@ -595,7 +598,8 @@ namespace _oxor_any_
 	template<typename any_t, size_t ary_size, size_t counter>
 	class oxor_any
 	{
-		static constexpr size_t size = align(ary_size * sizeof(any_t), 16) + random_constant<counter^ base_key, (counter^ base_key) % 128>::value % (16 + 1);
+		static constexpr size_t size = align(ary_size * sizeof(any_t), 16) 
+			+ random_constant<counter^ base_key, (counter^ base_key) % 128>::value % (16 + 1);
 		static constexpr size_t key = random_constant<counter^ base_key, (size^ base_key) % 128>::value;
 		uint8_t buffer[size];
 	public:
@@ -609,7 +613,8 @@ namespace _oxor_any_
 	template<typename any_t, size_t counter>
 	class oxor_any<any_t, 0, counter>
 	{
-		static constexpr size_t size = align(sizeof(any_t), 16) + random_constant<counter^ base_key, (counter^ base_key) % 128>::value % (16 + 1);
+		static constexpr size_t size = align(sizeof(any_t), 16) 
+			+ random_constant<counter^ base_key, (counter^ base_key) % 128>::value % (16 + 1);
 		static constexpr size_t key = random_constant<counter^ base_key, (size^ base_key) % 128>::value;
 		uint8_t buffer[size];
 	public:
@@ -620,3 +625,4 @@ namespace _oxor_any_
 		OXORANY_FORCEINLINE const any_t get() { return *decrypt<const any_t*, key>(buffer); }
 	};
 }
+#endif
