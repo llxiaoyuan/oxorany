@@ -100,6 +100,12 @@ int main() {
 
 <br />
 
+> 我们在将`xor`替换为一种更加复杂的实现方式，以提高逆向的难度
+
+![image](https://user-images.githubusercontent.com/36320938/132621379-81796348-23d1-4549-99b7-55e4aa87f0eb.png)
+
+<br />
+
 > 综上，在`oxorany`的帮助下，任何单纯依赖`IDA`静态分析的反向工程将变得不切实际
 
 <br />
