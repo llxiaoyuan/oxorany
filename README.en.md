@@ -3,7 +3,7 @@
 
 [![LICENSE](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-* [English](README.en.md)
+* [简体中文](README.md)
 
 ### 介绍
 
