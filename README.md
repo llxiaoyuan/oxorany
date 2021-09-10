@@ -1,5 +1,5 @@
 # oxorany
-## A heavily obfuscated c++14 compile time any constant encryption.
+## 带有混淆的编译时常量加密
 
 [![LICENSE](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
