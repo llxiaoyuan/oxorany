@@ -5,13 +5,13 @@
 
 * [简体中文](README.md)
 
-### 介绍
+### Description
 
 > 我们综合了开源项目`ollvm`、`xorstr`一些实现思路，以及`c++14`标准中新加入的`constexpr`关键字和一些模板的知识，完成了编译时的任意常量的混淆加密，所支持的数据类型基本涵盖了`C++`的全部类型的常量，`字符串`、`宏`、`枚举`、`整数`、`浮点`等已知的数据类型
 
 <br />
 
-### 特性
+### Features
 * 编译时的任意常量的混淆加密
 * 带有`伪造控制流`功能的解密算法
 * 通过`编译优化剪枝`为每一个加密算法生成唯一的控制流
@@ -27,7 +27,7 @@
 
 <br />
 
-### 使用
+### Usage
 ```C++
 #include <iostream>
 #include "oxorany.h"
@@ -63,13 +63,13 @@ int main() {
 
 <br />
 
-### `IDA`中的控制流程图
+### `Control Flow Graph` in `IDA`
 
 ![image](https://user-images.githubusercontent.com/36320938/132527280-34c443b8-40b5-4b76-a35b-2629a1df087c.png)
 
 <br />
 
-### 编译优化剪枝测试
+### `Compilation Optimization` test
 
 ```C++
 #include "oxorany.h"
@@ -80,19 +80,19 @@ int main() {
 
 <br />
 
-### 使用`msvc`多次编译后`IDA`中的`控制流程图`
+### `Control Flow Graph` in `IDA` after multiple compilation using `msvc`
 
 ![image](https://user-images.githubusercontent.com/36320938/132721095-7ef48f99-37ef-407e-bf14-0ba3e72f1e25.png)
 
 <br />
 
-### 使用`clang`多次编译后`IDA`中的`控制流程图`
+### `Control Flow Graph` in `IDA` after multiple compilation using `clang`
 
 ![image](https://user-images.githubusercontent.com/36320938/132723406-dcf26a9e-9a12-4fa4-a0b7-4889861d7478.png)
 
 <br />
 
-### 使用`gcc`多次编译后`IDA`中的`控制流程图`
+### `Control Flow Graph` in `IDA` after multiple compilation using `gcc`
 
 ![image](https://user-images.githubusercontent.com/36320938/132799274-d816cc02-e913-43ab-b183-3a1c75fee5ce.png)
 
