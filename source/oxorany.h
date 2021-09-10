@@ -139,7 +139,8 @@ namespace _oxor_any_
 		//a ^ b == (a + b) - 2 * (a & b)
 		size_t a = c;
 		size_t b = i + key;
-		size_t a_xor_b = (a + b) - 2 * (a & b);
+		//size_t a_xor_b = (a + b) - 2 * (a & b);
+		size_t a_xor_b = (a + b) - ((a & b) + (b & a));
 		return static_cast<uint8_t>((a_xor_b) - (key * 7));
 	}
 
