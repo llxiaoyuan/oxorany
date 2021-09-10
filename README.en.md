@@ -7,23 +7,23 @@
 
 ### Description
 
-> 我们综合了开源项目`ollvm`、`xorstr`一些实现思路，以及`c++14`标准中新加入的`constexpr`关键字和一些模板的知识，完成了编译时的任意常量的混淆加密，所支持的数据类型基本涵盖了`C++`的全部类型的常量，`字符串`、`宏`、`枚举`、`整数`、`浮点`等已知的数据类型
+> We integrated some implementation ideas from open source projects `ollvm` and `xorstr`, as well as the new `constexpr` keyword in the `c++14` standard and some template knowledge, to complete the compile-time obfuscation encryption of arbitrary constants, and the supported data types basically cover all types of constants in `C++`, `String`, `Macro`, `Enumeration`, `Integer`, `Floating point` and other known data types. `integer`, `floating point` and other known data types
 
 <br />
 
 ### Features
-* 编译时的任意常量的混淆加密
-* 带有`伪造控制流`功能的解密算法
-* 通过`编译优化剪枝`为每一个加密算法生成唯一的控制流
-* 通过`__COUNTER__` 宏为每一个加密算法生成唯一的`key`
-* 通过`__TIME__`宏动态产生`key`
-* 破坏堆栈以对抗`IDA` `F5`
-* 基于堆栈变量的`不透明谓词`
-* 模糊数据长度
-* 由于解密算法的大部分代码不会被执行，所以对于效率的影响并不会特别大
-* 解密算法的复杂度仍有提升空间
-* 因为`C++`中常量的`隐式转换`特性，某些常量可能需要强制类型转换
-* 简单易用，且在`msvc`、`clang`、`gcc`中测试通过
+* Obfuscated encryption of arbitrary constants at compile time
+* Decryption algorithm with `fake control flow` function
+* Generate a unique control flow for each encryption algorithm through `compile optimization
+* Generate a unique `key` for each encryption algorithm with the `__COUNTER__` macro
+* Dynamically generate `key` via the `__TIME__` macro
+* Destroying the stack to counteract `IDA` `F5`
+* Stack variable based `opaque predicate`
+* Fuzzy data length
+* Since most of the code for the decryption algorithm is not executed, the impact on efficiency is not particularly significant
+* The complexity of the decryption algorithm still has room for improvement
+* Because of the `implicit conversion` feature of constants in `C++`, some constants may require forced type conversion
+* Easy to use, tested in `msvc`, `clang`, `gcc`
 
 <br />
 
@@ -98,17 +98,11 @@ int main() {
 
 <br />
 
-### 不透明谓词
+### Opaque predicate
 
-> 不透明：`opaque`  
-> `★`来自拉丁语opacus,有阴影的，黑暗的，模糊的。
+> The `opaque predicate` can be understood as `"the judgment of the result cannot be determined"，The words themselves do not contain the meaning that the result must be true or must be false, but only the condition that the result must be true is used here for obfuscation。
 
-> 谓词：`predicate`  
-> `★`来自拉丁语praedicare,预测，断言，声称，来自prae,在前，早于，dicare,说，声称，词源同diction.并引申诸相关词义。
-
-> `不透明谓词`可以理解为`“无法确定结果的判断”`，词语本身并没有包含结果必为真或者必为假的含义，只是在这里使用了结果必为真的条件进行混淆。
-
-> 代码中的`rand() % 2 == 0`实际上也是一个不透明谓词，因为我们无法确定它的结果，所以就无法确实程序是输出`hello`还是输出`world`
+> The `rand() % 2 == 0` in the code is actually an opaque predicate, because we can't determine its result, so we can't be sure whether the program is outputting `hello` or `world`
 
 ```C++
 #include <stdio.h>
@@ -128,7 +122,7 @@ int main() {
 
 <br />
 
-> 但是换一种情况，这里我们创建了一个全局变量`zeor`，并赋初值为`0`，不去修改`zeor`的值或者在保证谓词结果恒定的情况下进行合理的修改，那么谓词`zeor < 1`就是恒成立的，同时又由于全局变量的天然的不透明性，编译器不会进行优化，所以我们就增加一个伪造的控制流，我称之为`无中seng有`。我们可以在不可达的基本块内加入`任意代码`，这里我们添加了一个典中典`99乘法表`作为示例，我称之为`暗度ceng仓`。
+> But in another case, here we create a global variable `zeor` and assign an initial value of `0`, without modifying the value of `zeor` or making reasonable modifications to ensure that the result of the predicate is constant, then the predicate `zeor < 1` is constant, and at the same time the compiler will not optimize due to the natural opacity of global variables, so we add a forged to the control flow. We can add `any code` inside an unreachable basic block, and here we add a `99 multiplication table` as an example.。
 
 ```C++
 #include <stdio.h>
@@ -154,7 +148,7 @@ int main() {
 
 <br />
 
-> 这里`copy`一下`ollvm`中的代码，`ASCII Picasso`
+> Here `copy` the code from `ollvm`，`ASCII Picasso`
 
 ```C++
 // Before :
@@ -192,7 +186,7 @@ int main() {
 
 <br />
 
-`ollvm`中全局`x`、`y`的定义
+> Definition of global `x`, `y` in ollvm`
 
 ```C++
       GlobalVariable 	* x = new GlobalVariable(M, Type::getInt32Ty(M.getContext()), false,
@@ -205,7 +199,7 @@ int main() {
 
 <br />
 
-`ollvm`中不透明谓词`y < 10 || x * (x + 1) % 2 == 0`的实现，由`Instruction::Sub`可知，虽然注释是`x + 1`，但实际使用的确实`x - 1`，`问题不大，殊途同归`
+> The implementation of the opaque predicate `y < 10 || x * (x + 1) % 2 == 0` in `ollvm` is shown by `Instruction::Sub`, which, although annotated with `x + 1`, actually uses `x - 1`
 
 ```C++
         //if y < 10 || x*(x+1) % 2 == 0
@@ -233,7 +227,7 @@ int main() {
 
 <br />
 
-> 将我们上面的代码稍作调整，以展示`ollvm`的实现，这里的`x * (x + 1) % 2 == 0`，以为`x`和`x + 1`，必然是一个奇数一个偶数，根据奇偶性的运算法则可以得知`x * (x + 1)`的结果必然是偶数，所以`% 2 == 0`的判断将必然成立
+> Adjusting our code above slightly to show the implementation of `ollvm`, here `x * (x + 1) % 2 == 0`, thinking that `x` and `x + 1`, must be an odd number and an even number, according to the operation of parity we can learn that the result of `x * (x + 1)` must be even, so the judgment of `% 2 == 0` will necessarily hold
 
 ```C++
 #include <stdio.h>
@@ -260,68 +254,68 @@ int main() {
 
 <br />
 
-### 实现
-> 受到`ollvm`中`伪造控制流`功能的启发，我们创建了两个全局变量`x`、`y`，并赋初值为`0`，作为实现不透明谓词的基础
+### Implemention
+> Inspired by the `fake control flow` function in `ollvm`, we created two global variables `x` and `y` and assigned initial values of `0` as the basis for implementing opaque predicates
 
 ![image](https://user-images.githubusercontent.com/36320938/132540802-06b63425-acc8-4da8-b9d7-de5886587f42.png)
 
 <br />
 
-> 由于栈环境的复杂性，我们将全局变量`x`、`y`分别赋值给两个局部变量`stack_x`、`stack_y`，以提高逆向的难度
+> Due to the complexity of the stack environment, we assign the global variables `x` and `y` to two local variables `stack_x` and `stack_y` respectively to make the inverse more difficult
 
 ![image](https://user-images.githubusercontent.com/36320938/132541176-02f4f8a7-0b80-4b2a-b584-7658f954a003.png)
 
 <br />
 
-> 我们在函数的很多位置创建了`label`，使用`stack_x`、`stack_y`进行恒为真的判断进行混淆，在无法到达的基本快内添加`goto label`以尽可能得对基本块进行拆分。我们在多处对解密后的数据`decrypted`使用错误的`key`进行解密，使得真实的`key`在众多的错误的`key`中难以被识别，`乱花渐欲迷人眼，浅草才能没马蹄`
+> We created `label` in many positions of the function, used `stack_x`, `stack_y` to judge the constant to be true for confusion, and added `goto label` in the basic block that could not be reached to remove the basic block as much as possible point. We use the wrong key to decrypt the decrypted data `decrypted` in many places, so that the real key is difficult to identify among the many wrong keys.
 
 ![image](https://user-images.githubusercontent.com/36320938/132542465-c9495bde-c34f-468b-ae0f-b9ab79959bba.png)
 
 <br />
 
-> 生成带有范围限制的随机数，因为这里可以出现相同的值，同时又因为编译优化的存在，重复的条件会被优化掉，这使得我们每一次的编译，都拥有不尽相同的控制流程图
+> Generate random numbers with range restrictions, since the same values can occur here, while duplicate conditions are removed by compilation optimization because of the existence of compilation optimization, which makes us have a different control flow diagram for each compilation
 
 ![image](https://user-images.githubusercontent.com/36320938/132543102-c7c59806-6f34-4f60-b5cf-59abdfa79048.png)
 
 <br />
 
-> 我们在无法到达的基本快内加入非法的栈操作使得`IDA`的栈帧分析失败，以对抗`F5`
+> We add illegal stack operations within the unreachable basic fast to make `IDA`'s stack frame analysis fail against `F5`
 
 ![image](https://user-images.githubusercontent.com/36320938/132544334-27a63575-35b0-4b52-ac12-9079a984c2bf.png)
 
 <br />
 
-> 我们在将数据按`16`字节对齐并加上一定的随机值以模糊数据长度，这可能会浪费一点空间
+> We are aligning the data by `16` bytes and adding a certain random value to obscure the data length, which may waste a little space
 
 ![image](https://user-images.githubusercontent.com/36320938/132553464-d8ef7b64-c4a7-4a36-9250-51062751a8d1.png)
 
 <br />
 
-> 我们在将`xor`替换为一种更加复杂的实现方式，以提高逆向的难度
+> We are replacing `xor` with a more complex implementation to make the inversion more difficult
 
 ![image](https://user-images.githubusercontent.com/36320938/132621379-81796348-23d1-4549-99b7-55e4aa87f0eb.png)
 
 <br />
 
-> 使用`__TIME__`宏实现每一次编译都不一样的`key`
+> Use the `__TIME__` macro to implement a different `key` for each compilation
 
 ![image](https://user-images.githubusercontent.com/36320938/132704045-7510c6df-f2db-4e9b-99b0-ca80aa871aed.png)
 
 <br />
 
-> 带有范围限制的随机数生成器，使得`不透明谓词`相似于正常的`谓词`
+> Random number generator with range restrictions, making `opaque predicates` similar to normal `predicates`
 
 ![image](https://user-images.githubusercontent.com/36320938/132704535-10761dda-61e7-47b3-95a4-e2439d483532.png)
 
 <br />
 
-> 综上所述，在`oxorany`的帮助下，软件的安全性将会得到进一步的提高
+> To sum up, with the help of `oxorany`, the security of the software will be further improved
 
 <br />
 
-### 参考
+### Reference
 + [PLCT实验室维护的ollvm分支](https://github.com/isrc-cas/flounder)
-+ [高度矢量化的 c++17 编译时字符串加密](https://github.com/JustasMasiulis/xorstr)
++ [heavily vectorized c++17 compile time string encryption](https://github.com/JustasMasiulis/xorstr)
 
 <br />
 
