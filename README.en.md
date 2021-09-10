@@ -100,7 +100,7 @@ int main() {
 
 ### Opaque predicate
 
-> The `opaque predicate` can be understood as `"the judgment of the result cannot be determined"，The words themselves do not contain the meaning that the result must be true or must be false, but only the condition that the result must be true is used here for obfuscation。
+> The `opaque predicate` can be understood as `"the judgment of the result cannot be determined"`，The words themselves do not contain the meaning that the result must be true or must be false, but only the condition that the result must be true is used here for obfuscation。
 
 > The `rand() % 2 == 0` in the code is actually an opaque predicate, because we can't determine its result, so we can't be sure whether the program is outputting `hello` or `world`
 
