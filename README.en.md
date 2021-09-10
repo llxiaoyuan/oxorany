@@ -12,16 +12,16 @@
 <br />
 
 ### Features
-* Obfuscated encryption of arbitrary constants at compile time
-* Decryption algorithm with `fake control flow` function
-* Generate a unique control flow for each encryption algorithm through `compile optimization
+* Obfuscated encryption of any constants at compile time
+* Decryption algorithm with `Bogus Control Flow` like `ollvm`
+* Generate a unique control flow for each encryption algorithm through `compile optimization`
 * Generate a unique `key` for each encryption algorithm with the `__COUNTER__` macro
 * Dynamically generate `key` via the `__TIME__` macro
-* Destroying the stack to counteract `IDA` `F5`
-* Stack variable based `opaque predicate`
+* Destroying the stack to anti `IDA` `F5`
+* Stack variable based `Opaque Predicate`
 * Fuzzy data length
 * Since most of the code for the decryption algorithm is not executed, the impact on efficiency is not particularly significant
-* The complexity of the decryption algorithm still has room for improvement
+* The complexity of the decryption algorithm can be improve
 * Because of the `implicit conversion` feature of constants in `C++`, some constants may require forced type conversion
 * Easy to use, tested in `msvc`, `clang`, `gcc`
 
@@ -100,7 +100,7 @@ int main() {
 
 ### Opaque predicate
 
-> The `opaque predicate` can be understood as `"the judgment of the result cannot be determined"`，The words themselves do not contain the meaning that the result must be true or must be false, but only the condition that the result must be true is used here for obfuscation。
+> The `opaque predicate` can be understood as `"the judgment of the result cannot be determined"`，The words themselves do not contain the meaning that the result must be true or must be false, but only the condition that the result must be true is used here for obfuscation
 
 > The `rand() % 2 == 0` in the code is actually an opaque predicate, because we can't determine its result, so we can't be sure whether the program is outputting `hello` or `world`
 
@@ -255,7 +255,7 @@ int main() {
 <br />
 
 ### Implemention
-> Inspired by the `fake control flow` function in `ollvm`, we created two global variables `x` and `y` and assigned initial values of `0` as the basis for implementing opaque predicates
+> Inspired by the `Bogus Control Flow` function in `ollvm`, we created two global variables `x` and `y` and assigned initial values of `0` as the basis for implementing opaque predicates
 
 ![image](https://user-images.githubusercontent.com/36320938/132540802-06b63425-acc8-4da8-b9d7-de5886587f42.png)
 
@@ -273,7 +273,7 @@ int main() {
 
 <br />
 
-> Generate random numbers with range restrictions, since the same values can occur here, while duplicate conditions are removed by compilation optimization because of the existence of compilation optimization, which makes us have a different control flow diagram for each compilation
+> Generate random numbers with range limition, since the same values can occur here, while duplicate conditions are removed by compilation optimization because of the existence of compilation optimization, which makes us have a different control flow diagram for each compilation
 
 ![image](https://user-images.githubusercontent.com/36320938/132543102-c7c59806-6f34-4f60-b5cf-59abdfa79048.png)
 
