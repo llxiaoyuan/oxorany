@@ -86,6 +86,11 @@ int main() {
 
 ![image](https://user-images.githubusercontent.com/36320938/132723406-dcf26a9e-9a12-4fa4-a0b7-4889861d7478.png)
 
+<br />
+
+### 使用`gcc`多次编译后`IDA`中的`控制流程图`
+
+![image](https://user-images.githubusercontent.com/36320938/132799274-d816cc02-e913-43ab-b183-3a1c75fee5ce.png)
 
 <br />
 
