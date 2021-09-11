@@ -17,8 +17,6 @@
 - [x] 整数(`int8_t` `int16_t` `int32_t` `int64_t` `uint8_t` `uint16_t` `uint32_t` `uint64_t`)
 - [x] 浮点(`float` `double`)
 
-<br />
-
 ### 特性
 * 所有的加密过程均在编译时完成
 * 带有`伪造控制流`功能的解密算法
