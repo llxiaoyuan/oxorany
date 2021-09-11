@@ -112,10 +112,10 @@ namespace _oxor_any_ {
 #endif 
 
 	template<typename T, size_t size>
-	static __forceinline constexpr size_t array_size(const T(&a)[size]) { return size; }
+	static OXORANY_FORCEINLINE constexpr size_t array_size(const T(&a)[size]) { return size; }
 
 	template<typename T>
-	static __forceinline constexpr size_t array_size(T a) { return 0; }
+	static OXORANY_FORCEINLINE constexpr size_t array_size(T a) { return 0; }
 
 	template<typename T, size_t size>
 	static inline T typeofs(const T(&)[size]);
