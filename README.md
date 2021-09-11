@@ -30,6 +30,7 @@
 ### 使用
 ```C++
 #include <iostream>
+//#define OXORANY_DISABLE_OBFUSCATION
 #include "oxorany.h"
 
 enum class MyEnum : int {
