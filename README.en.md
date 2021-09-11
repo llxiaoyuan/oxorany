@@ -2,6 +2,7 @@
 ## A heavily obfuscated c++14 compile time any constant encryption.
 
 [![LICENSE](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+![C++](https://img.shields.io/badge/C%2B%2B-14-brightgreen)
 
 * [简体中文](README.md)
 
