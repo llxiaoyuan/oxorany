@@ -173,47 +173,47 @@ namespace _oxor_any_
 				else if (stack_x == stack_y + limit<key * __COUNTER__>() % 1 + 1) {
 					//unreachable
 					decrypted = decrypt_byte<key* __COUNTER__>(source, i);
-					goto loc_start_9;
+					goto loc_unreachable_9;
 				}
 				else if (stack_x == stack_y + limit<key * __COUNTER__>() % 2 + 1) {
 					//unreachable
 					decrypted = decrypt_byte<key* __COUNTER__>(source, i);
-					goto loc_start_8;
+					goto loc_unreachable_8;
 				}
 				else if (stack_x == stack_y + limit<key * __COUNTER__>() % 3 + 1) {
 					//unreachable
 					decrypted = decrypt_byte<key* __COUNTER__>(source, i);
-					goto loc_start_7;
+					goto loc_unreachable_7;
 				}
 				else if (stack_x == stack_y + limit<key * __COUNTER__>() % 4 + 1) {
 					//unreachable
 					decrypted = decrypt_byte<key* __COUNTER__>(source, i);
-					goto loc_start_6;
+					goto loc_unreachable_6;
 				}
 				else if (stack_x == stack_y + limit<key * __COUNTER__>() % 5 + 1) {
 					//unreachable
 					decrypted = decrypt_byte<key* __COUNTER__>(source, i);
-					goto loc_start_5;
+					goto loc_unreachable_5;
 				}
 				else if (stack_x == stack_y + limit<key * __COUNTER__>() % 6 + 1) {
 					//unreachable
 					decrypted = decrypt_byte<key* __COUNTER__>(source, i);
-					goto loc_start_4;
+					goto loc_unreachable_4;
 				}
 				else if (stack_x == stack_y + limit<key * __COUNTER__>() % 7 + 1) {
 					//unreachable
 					decrypted = decrypt_byte<key* __COUNTER__>(source, i);
-					goto loc_start_3;
+					goto loc_unreachable_3;
 				}
 				else if (stack_x == stack_y + limit<key * __COUNTER__>() % 8 + 1) {
 					//unreachable
 					decrypted = decrypt_byte<key* __COUNTER__>(source, i);
-					goto loc_start_2;
+					goto loc_unreachable_2;
 				}
 				else if (stack_x == stack_y + limit<key * __COUNTER__>() % 9 + 1) {
 					//unreachable
 					decrypted = decrypt_byte<key* __COUNTER__>(source, i);
-					goto loc_start_1;
+					goto loc_unreachable_1;
 				}
 			loc_start_4:
 				if (stack_y <= i) {
@@ -273,47 +273,47 @@ namespace _oxor_any_
 						else if (stack_x == stack_y + limit<key * __COUNTER__>() % 1 + 1) {
 							//unreachable
 							decrypted = decrypt_byte<key* __COUNTER__>(source, i);
-							goto loc_start_9;
+							goto loc_unreachable_9;
 						}
 						else if (stack_x == stack_y + limit<key * __COUNTER__>() % 2 + 1) {
 							//unreachable
 							decrypted = decrypt_byte<key* __COUNTER__>(source, i);
-							goto loc_start_8;
+							goto loc_unreachable_8;
 						}
 						else if (stack_x == stack_y + limit<key * __COUNTER__>() % 3 + 1) {
 							//unreachable
 							decrypted = decrypt_byte<key* __COUNTER__>(source, i);
-							goto loc_start_7;
+							goto loc_unreachable_7;
 						}
 						else if (stack_x == stack_y + limit<key * __COUNTER__>() % 4 + 1) {
 							//unreachable
 							decrypted = decrypt_byte<key* __COUNTER__>(source, i);
-							goto loc_start_6;
+							goto loc_unreachable_6;
 						}
 						else if (stack_x == stack_y + limit<key * __COUNTER__>() % 5 + 1) {
 							//unreachable
 							decrypted = decrypt_byte<key* __COUNTER__>(source, i);
-							goto loc_start_5;
+							goto loc_unreachable_5;
 						}
 						else if (stack_x == stack_y + limit<key * __COUNTER__>() % 6 + 1) {
 							//unreachable
 							decrypted = decrypt_byte<key* __COUNTER__>(source, i);
-							goto loc_start_4;
+							goto loc_unreachable_4;
 						}
 						else if (stack_x == stack_y + limit<key * __COUNTER__>() % 7 + 1) {
 							//unreachable
 							decrypted = decrypt_byte<key* __COUNTER__>(source, i);
-							goto loc_start_3;
+							goto loc_unreachable_3;
 						}
 						else if (stack_x == stack_y + limit<key * __COUNTER__>() % 8 + 1) {
 							//unreachable
 							decrypted = decrypt_byte<key* __COUNTER__>(source, i);
-							goto loc_start_2;
+							goto loc_unreachable_2;
 						}
 						else if (stack_x == stack_y + limit<key * __COUNTER__>() % 9 + 1) {
 							//unreachable
 							decrypted = decrypt_byte<key* __COUNTER__>(source, i);
-							goto loc_start_1;
+							goto loc_unreachable_1;
 						}
 					loc_start_6:
 						if (stack_x + stack_y != limit<key * __COUNTER__>()) {
@@ -375,47 +375,47 @@ namespace _oxor_any_
 								else if (stack_x == stack_y + limit<key * __COUNTER__>() % 1 + 1) {
 									//unreachable
 									decrypted = decrypt_byte<key* __COUNTER__>(source, i);
-									goto loc_start_9;
+									goto loc_unreachable_9;
 								}
 								else if (stack_x == stack_y + limit<key * __COUNTER__>() % 2 + 1) {
 									//unreachable
 									decrypted = decrypt_byte<key* __COUNTER__>(source, i);
-									goto loc_start_8;
+									goto loc_unreachable_8;
 								}
 								else if (stack_x == stack_y + limit<key * __COUNTER__>() % 3 + 1) {
 									//unreachable
 									decrypted = decrypt_byte<key* __COUNTER__>(source, i);
-									goto loc_start_7;
+									goto loc_unreachable_7;
 								}
 								else if (stack_x == stack_y + limit<key * __COUNTER__>() % 4 + 1) {
 									//unreachable
 									decrypted = decrypt_byte<key* __COUNTER__>(source, i);
-									goto loc_start_6;
+									goto loc_unreachable_6;
 								}
 								else if (stack_x == stack_y + limit<key * __COUNTER__>() % 5 + 1) {
 									//unreachable
 									decrypted = decrypt_byte<key* __COUNTER__>(source, i);
-									goto loc_start_5;
+									goto loc_unreachable_5;
 								}
 								else if (stack_x == stack_y + limit<key * __COUNTER__>() % 6 + 1) {
 									//unreachable
 									decrypted = decrypt_byte<key* __COUNTER__>(source, i);
-									goto loc_start_4;
+									goto loc_unreachable_4;
 								}
 								else if (stack_x == stack_y + limit<key * __COUNTER__>() % 7 + 1) {
 									//unreachable
 									decrypted = decrypt_byte<key* __COUNTER__>(source, i);
-									goto loc_start_3;
+									goto loc_unreachable_3;
 								}
 								else if (stack_x == stack_y + limit<key * __COUNTER__>() % 8 + 1) {
 									//unreachable
 									decrypted = decrypt_byte<key* __COUNTER__>(source, i);
-									goto loc_start_2;
+									goto loc_unreachable_2;
 								}
 								else if (stack_x == stack_y + limit<key * __COUNTER__>() % 9 + 1) {
 									//unreachable
 									decrypted = decrypt_byte<key* __COUNTER__>(source, i);
-									goto loc_start_1;
+									goto loc_unreachable_1;
 								}
 							loc_start_8:
 								if (stack_y < limit<key * __COUNTER__>()) {
