@@ -8,15 +8,7 @@
 
 ### Description
 
-> We integrated some implementation ideas from open source projects `ollvm` and `xorstr`, as well as the new `constexpr` keyword in the `c++14` standard and some template knowledge, to complete the compile-time obfuscation encryption of arbitrary constants, and the supported data types basically cover all types of constants in `C++`, `String`, `Macro`, `Enume`, `Integer`, `Floating point` and other known data types. `integer`, `floating point` and other known data types
-
-<br />
-
-- [x] String(`wchar_t*` `char*`)
-- [x] Macro
-- [x] Enume
-- [x] Integer(`int8_t` `int16_t` `int32_t` `int64_t` `uint8_t` `uint16_t` `uint32_t` `uint64_t`)
-- [x] Floating point(`float` `double`)
+> We integrated some implementation ideas from open source projects `ollvm` and `xorstr`, as well as the new `constexpr` keyword in the `c++14` standard and some template knowledge, to complete the compile-time obfuscation encryption of arbitrary constants.
 
 ### Features
 * Obfuscated encryption of any constants at compile time
@@ -31,6 +23,21 @@
 * The complexity of the decryption algorithm can be improve
 * Because of the `implicit conversion` feature of constants in `C++`, some constants may require forced type conversion
 * Easy to use, tested in `msvc`, `clang`, `gcc`
+
+### Data types supported
+
+- [x] String(`wchar_t*` `char*`)
+- [x] Macro
+- [x] Enume
+- [x] Integer(`int8_t` `int16_t` `int32_t` `int64_t` `uint8_t` `uint16_t` `uint32_t` `uint64_t`)
+- [x] Floating point(`float` `double`)
+
+### Compilers Supported
+
+- [x] `msvc`
+- [x] `clang`(`llvm`)
+- [x] `gcc`
+- [x] `...`
 
 <br />
 
