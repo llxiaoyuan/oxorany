@@ -74,28 +74,38 @@ int main() {
 ### 需要强制类型转换的示例
 
 > 0 error 0 warning
+
 ```C++
-#include <Windows.h>
-#include "oxorany.h"
-int main() 
-{
-	MessageBoxA(0, 0, 0, 0);
-	return 0;
-}
+MessageBoxA(0, 0, 0, 0);
 ```
 
 <br />
 
-> 1 error 0 warning
+> 错误(活动)	E0167	"int" 类型的实参与 "HWND" 类型的形参不兼容
 
 ```C++
-#include <Windows.h>
-#include "oxorany.h"
-int main() 
-{
-	MessageBoxA(oxorany(0), 0, 0, 0);
-	return 0;
-}
+MessageBoxA(oxorany(0), 0, 0, 0);
+```
+
+<br />
+
+> 出现上述问题的原因是因为`C/C++`中`0`的特殊性，因为它可以隐式转换到任意类型的指针，也和`NULL`的定义有关
+
+```C++
+#ifndef NULL
+    #ifdef __cplusplus
+        #define NULL 0
+    #else
+        #define NULL ((void *)0)
+    #endif
+#endif
+```
+
+<br />
+
+> 所以我们添加一个到`HWND`的强制类型转换就可以解决该问题
+```C++
+MessageBoxA(oxorany((HWND)0), 0, 0, 0);
 ```
 
 <br />
