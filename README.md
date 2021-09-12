@@ -71,6 +71,35 @@ int main() {
 
 <br />
 
+### 需要强制类型转换的示例
+
+> 0 error 0 warning
+```C++
+#include <Windows.h>
+#include "oxorany.h"
+int main() 
+{
+	MessageBoxA(0, 0, 0, 0);
+	return 0;
+}
+```
+
+<br />
+
+> 1 error 0 warning
+
+```C++
+#include <Windows.h>
+#include "oxorany.h"
+int main() 
+{
+	MessageBoxA(oxorany(0), 0, 0, 0);
+	return 0;
+}
+```
+
+<br />
+
 ### `IDA`中的控制流程图
 
 ![image](https://user-images.githubusercontent.com/36320938/132527280-34c443b8-40b5-4b76-a35b-2629a1df087c.png)
