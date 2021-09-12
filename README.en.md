@@ -71,6 +71,45 @@ int main() {
 
 <br />
 
+### Need Cast
+
+> 0 error 0 warning
+
+```C++
+MessageBoxA(0, 0, 0, 0);
+```
+
+<br />
+
+> error(active)	E0167 Real parameters of type "int" are incompatible with formal parameters of type "HWND"
+
+```C++
+MessageBoxA(oxorany(0), 0, 0, 0);
+```
+
+<br />
+
+> The reason for the above problem is due to the peculiarity of `0` in `C/C++`, because it can be implicitly converted to a pointer of any type, and is also related to the definition of `NULL`
+
+```C++
+#ifndef NULL
+    #ifdef __cplusplus
+        #define NULL 0
+    #else
+        #define NULL ((void *)0)
+    #endif
+#endif
+```
+
+<br />
+
+> So we add a forced type conversion to `HWND` to solve the problem
+```C++
+MessageBoxA(oxorany((HWND)0), 0, 0, 0);
+```
+
+<br />
+
 ### `Control Flow Graph` in `IDA`
 
 ![image](https://user-images.githubusercontent.com/36320938/132527280-34c443b8-40b5-4b76-a35b-2629a1df087c.png)
