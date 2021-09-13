@@ -2,7 +2,10 @@
 ## 带有混淆的编译时任意常量加密
 
 [![LICENSE](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-![C++](https://img.shields.io/badge/C%2B%2B-14-brightgreen)
+[![](https://img.shields.io/badge/C%2B%2B-14-brightgreen)]()
+[![](https://img.shields.io/badge/OS-any-brightgreen)]()
+[![](https://img.shields.io/badge/compiler-any-brightgreen)]()
+[![](https://img.shields.io/badge/arch-any-brightgreen)]()
 
 * [English](README.en.md)
 
