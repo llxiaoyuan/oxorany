@@ -47,8 +47,6 @@ printf("%s\n", encrypted);
 * 简单易用，且在`msvc`、`clang`、`gcc`中测试通过
 * **不能保证数据会内联到代码段**，[想要内联](https://github.com/llxiaoyuan/xorstr)
 
-<br />
-
 ### 支持的数据类型
 
 - [x] 字符串(`wchar_t*` `char*`)
