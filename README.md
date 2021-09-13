@@ -60,6 +60,7 @@ printf("%s\n", encrypted);
 - [x] `msvc`
 - [x] `clang`(`llvm`)
 - [x] `gcc`
+- [x] `ndk`
 - [x] `...`
 
 <br />
@@ -172,6 +173,12 @@ int main() {
 ### 使用`gcc`多次编译后`IDA`中的`控制流程图`
 
 ![image](https://user-images.githubusercontent.com/36320938/132799274-d816cc02-e913-43ab-b183-3a1c75fee5ce.png)
+
+<br />
+
+### 使用`ndk`编译后`IDA`中的`控制流程图`
+
+![image](https://user-images.githubusercontent.com/36320938/133132325-d70fe632-5e7e-407a-a42c-7594b788507a.png)
 
 <br />
 
