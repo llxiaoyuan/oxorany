@@ -666,4 +666,5 @@ namespace _lxy_oxor_any_ {
 		OXORANY_FORCEINLINE const any_t get() { return *decrypt<const any_t*, key>(buffer); }
 	};
 }
+
 #endif
