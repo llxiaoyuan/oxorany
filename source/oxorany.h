@@ -35,17 +35,17 @@ SOFTWARE.
 
 #if _WIN32 || _WIN64
 #if _WIN64
-#define ENVIRONMENT64
+#define OXORANY_ENVIRONMENT64
 #else
-#define ENVIRONMENT32
+#define OXORANY_ENVIRONMENT32
 #endif
 #endif
 
 #if __GNUC__
 #if __x86_64__ || __ppc64__
-#define ENVIRONMENT64
+#define OXORANY_ENVIRONMENT64
 #else
-#define ENVIRONMENT32
+#define OXORANY_ENVIRONMENT32
 #endif
 #endif
 
@@ -105,7 +105,7 @@ namespace _lxy_oxor_any_ {
 		static constexpr uint64_t value = s;
 	};
 
-#ifdef ENVIRONMENT64
+#ifdef OXORANY_ENVIRONMENT64
 #define random_constant random_constant_64
 #else
 #define random_constant random_constant_32
