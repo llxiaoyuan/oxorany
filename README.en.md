@@ -46,6 +46,7 @@ printf("%s\n", encrypted);
 * **The complexity of the decryption algorithm can be improve**
 * Because of the `implicit conversion` feature of constants in `C++`, some constants may require forced type conversion
 * Easy to use, tested in `msvc`, `clang`, `gcc`
+* **There is no guarantee that the data will be embedded directly into code**，[Want embedded](https://github.com/llxiaoyuan/xorstr)
 
 ### Data types supported
 
