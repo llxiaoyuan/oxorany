@@ -388,14 +388,10 @@ int main() {
 
 > To sum up, with the help of `oxorany`, the security of the software will be further improved
 
-<br />
-
 ### Reference
 + [Armariris -- LLVM obfuscation framework maintained by the Laboratory of Cryptography and Computer Security, Shanghai Jiao Tong University](https://github.com/hcygithub/Armariris)
 + [PLCT labs maintain the collvm branch](https://github.com/isrc-cas/flounder)
 + [heavily vectorized c++17 compile time string encryption](https://github.com/JustasMasiulis/xorstr)
-
-<br />
 
 ### Github
 https://github.com/llxiaoyuan/oxorany
