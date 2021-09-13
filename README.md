@@ -45,7 +45,7 @@ printf("%s\n", encrypted);
 * **解密算法的复杂度仍有提升空间**
 * 因为`C++`中常量的`隐式转换`特性，某些常量可能需要强制类型转换
 * 简单易用，且在`msvc`、`clang`、`gcc`中测试通过
-* **不能保证数据会内联到代码段**，[想要内联](https://github.com/llxiaoyuan/xorstr)
+* **不能保证数据会被内联到代码段**，[想要内联](https://github.com/llxiaoyuan/xorstr)
 
 ### 支持的数据类型
 
