@@ -34,7 +34,7 @@ printf("%s\n", encrypted);
 
 ### Features
 * Obfuscated encryption of any constants at compile time
-* All the decryption process is done inside the stack, and the decrypted data cannot be obtained through runtime `dump`，unlike [Armariris](https://github.com/hcygithub/Armariris)、[flounder](https://github.com/isrc-cas/flounder)
+* All the decryption process is done inside the stack, and the decrypted data cannot be obtained through runtime `dump`，unlike [Armariris](https://github.com/GoSSIP-SJTU/Armariris)、[flounder](https://github.com/isrc-cas/flounder)
 * Decryption algorithm with `Bogus Control Flow` like `ollvm`
 * Generate a unique control flow for each encryption algorithm through `compile optimization`
 * Generate a unique `key` for each encryption algorithm with the `__COUNTER__` macro
@@ -390,7 +390,7 @@ int main() {
 > To sum up, with the help of `oxorany`, the security of the software will be further improved
 
 ### Reference
-+ [Armariris -- LLVM obfuscation framework maintained by the Laboratory of Cryptography and Computer Security, Shanghai Jiao Tong University](https://github.com/hcygithub/Armariris)
++ [Armariris -- LLVM obfuscation framework maintained by the Laboratory of Cryptography and Computer Security, Shanghai Jiao Tong University](https://github.com/GoSSIP-SJTU/Armariris)
 + [PLCT labs maintain the collvm branch](https://github.com/isrc-cas/flounder)
 + [heavily vectorized c++17 compile time string encryption](https://github.com/JustasMasiulis/xorstr)
 
