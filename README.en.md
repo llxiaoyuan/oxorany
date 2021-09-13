@@ -30,10 +30,11 @@ printf("%s\n", encrypted);
 
 > The above method can only be used when the amount of data to be protected is relatively small, and when the amount of data increases, the time taken by the tedious encryption process will also rise, and it makes the readability and maintainability of the code greatly reduced. And it is not possible to design a separate decryption algorithm and key for each data, which makes a general decryption tool easier to write.
 
-> With the advent of `oxorany`, the above process will be changed
+> **With the advent of `oxorany`, the above process will be changed**
 
 ### Features
 * Obfuscated encryption of any constants at compile time
+* All the decryption process is done inside the stack, and the decrypted data cannot be obtained through runtime `dump`，unlike [Armariris](https://github.com/hcygithub/Armariris)、[flounder](https://github.com/isrc-cas/flounder)
 * Decryption algorithm with `Bogus Control Flow` like `ollvm`
 * Generate a unique control flow for each encryption algorithm through `compile optimization`
 * Generate a unique `key` for each encryption algorithm with the `__COUNTER__` macro
@@ -42,7 +43,7 @@ printf("%s\n", encrypted);
 * Stack variable based `Opaque Predicate`
 * Fuzzy data length
 * Since most of the code for the decryption algorithm is not executed, the impact on efficiency is not particularly significant
-* The complexity of the decryption algorithm can be improve
+* **The complexity of the decryption algorithm can be improve**
 * Because of the `implicit conversion` feature of constants in `C++`, some constants may require forced type conversion
 * Easy to use, tested in `msvc`, `clang`, `gcc`
 
@@ -390,7 +391,8 @@ int main() {
 <br />
 
 ### Reference
-+ [PLCT实验室维护的ollvm分支](https://github.com/isrc-cas/flounder)
++ [Armariris -- LLVM obfuscation framework maintained by the Laboratory of Cryptography and Computer Security, Shanghai Jiao Tong University](https://github.com/hcygithub/Armariris)
++ [PLCT labs maintain the collvm branch](https://github.com/isrc-cas/flounder)
 + [heavily vectorized c++17 compile time string encryption](https://github.com/JustasMasiulis/xorstr)
 
 <br />
