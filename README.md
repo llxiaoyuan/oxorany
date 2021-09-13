@@ -33,7 +33,7 @@ printf("%s\n", encrypted);
 
 ### 特性
 * 所有的加密过程均在编译时完成
-* 所有的解密过程均在栈内完成，无法通过运行时`dump`获得解密后的数据，不同于 [Armariris](https://github.com/hcygithub/Armariris)、[flounder](https://github.com/isrc-cas/flounder)
+* 所有的解密过程均在栈内完成，无法通过运行时`dump`获得解密后的数据，不同于 [Armariris](https://github.com/GoSSIP-SJTU/Armariris)、[flounder](https://github.com/isrc-cas/flounder)
 * 带有`伪造控制流`功能的解密算法
 * 通过`编译优化`为每一个加密算法生成唯一的控制流
 * 通过`__COUNTER__` 宏为每一个加密算法生成唯一的`key`
@@ -395,7 +395,7 @@ int main() {
 > 综上所述，在`oxorany`的帮助下，软件的安全性将会得到进一步的提高
 
 ### 参考
-+ [孤挺花（Armariris）-- 由上海交通大学密码与计算机安全实验室维护的LLVM混淆框架](https://github.com/hcygithub/Armariris)
++ [孤挺花（Armariris）-- 由上海交通大学密码与计算机安全实验室维护的LLVM混淆框架](https://github.com/GoSSIP-SJTU/Armariris)
 + [PLCT实验室维护的ollvm分支](https://github.com/isrc-cas/flounder)
 + [高度矢量化的 c++17 编译时字符串加密](https://github.com/JustasMasiulis/xorstr)
 
