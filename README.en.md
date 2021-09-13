@@ -13,6 +13,25 @@
 
 > We integrated some implementation ideas from open source projects `ollvm` and `xorstr`, as well as the new `constexpr` keyword in the `c++14` standard and some template knowledge, to complete the compile-time obfuscation encryption of arbitrary constants.
 
+> Before C++14, if we want to protect the constants in the program, we first encrypt the constants, here we take the string `"some_data_or_string"` byte by byte `-1` as an example, and then write the encrypted data "rnld^c\`s\`^nq^rsqhmf" to the code, while doing byte by byte `+1` decryption.
+
+> Code show as below
+
+```C++
+char encrypted[] = {"rnld^c`s`^nq^rsqhmf"};
+char key = 0x1;
+for (size_t i = 0; i < strlen(encrypted); i++) {
+	encrypted[i] += key;
+}
+//output: some_data_or_string
+printf("%s\n", encrypted);
+```
+
+
+> The above method can only be used when the amount of data to be protected is relatively small, and when the amount of data increases, the time taken by the tedious encryption process will also rise, and it makes the readability and maintainability of the code greatly reduced. And it is not possible to design a separate decryption algorithm and key for each data, which makes a general decryption tool easier to write.
+
+> With the advent of `oxorany`, the above process will be changed
+
 ### Features
 * Obfuscated encryption of any constants at compile time
 * Decryption algorithm with `Bogus Control Flow` like `ollvm`
