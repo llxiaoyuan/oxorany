@@ -39,7 +39,7 @@ printf("%s\n", encrypted);
 * Generate a unique control flow for each encryption algorithm through `compile optimization`
 * Generate a unique `key` for each encryption algorithm with the `__COUNTER__` macro
 * Dynamically generate `key` via the `__TIME__` macro
-* Destroying the stack to anti `IDA` `F5`
+* **The code has been crafted** so that can Destroying the stack to anti `IDA` `F5`
 * Stack variable based `Opaque Predicate`
 * Fuzzy data length
 * Since most of the code for the decryption algorithm is not executed, the impact on efficiency is not particularly significant
