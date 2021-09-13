@@ -56,12 +56,12 @@ SOFTWARE.
 #endif
 
 #ifndef _DEBUG
-#define oxorany(any) _oxor_any_::oxor_any<decltype(_oxor_any_::typeofs(any)), _oxor_any_::array_size(any), __COUNTER__>(any, std::make_index_sequence<sizeof(decltype(any))>()).get()
+#define oxorany(any) _lxy_oxor_any_::oxor_any<decltype(_lxy_oxor_any_::typeofs(any)), _lxy_oxor_any_::array_size(any), __COUNTER__>(any, std::make_index_sequence<sizeof(decltype(any))>()).get()
 #else
-#define oxorany(any) (any)
+#define oxorany
 #endif
 
-namespace _oxor_any_ {
+namespace _lxy_oxor_any_ {
 	
 	size_t& X();
 
