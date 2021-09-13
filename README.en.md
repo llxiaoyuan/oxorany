@@ -61,6 +61,7 @@ printf("%s\n", encrypted);
 - [x] `msvc`
 - [x] `clang`(`llvm`)
 - [x] `gcc`
+- [x] `ndk`
 - [x] `...`
 
 <br />
@@ -173,6 +174,12 @@ int main() {
 ### `Control Flow Graph` in `IDA` after multiple compilation using `gcc`
 
 ![image](https://user-images.githubusercontent.com/36320938/132799274-d816cc02-e913-43ab-b183-3a1c75fee5ce.png)
+
+<br />
+
+### `Control Flow Graph` in `IDA` after compilation using `ndk`
+
+![image](https://user-images.githubusercontent.com/36320938/133132325-d70fe632-5e7e-407a-a42c-7594b788507a.png)
 
 <br />
 
