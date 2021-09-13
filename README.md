@@ -34,7 +34,7 @@ printf("%s\n", encrypted);
 
 ### 特性
 * 所有的加密过程均在编译时完成
-* 所有的解密过程均在栈内完成，无法通过运行时`dump`获得解密后的数据，不同于[Armariris](https://github.com/hcygithub/Armariris)、[flounder](https://github.com/isrc-cas/flounder)
+* 所有的解密过程均在栈内完成，无法通过运行时`dump`获得解密后的数据，不同于 [Armariris](https://github.com/hcygithub/Armariris)、[flounder](https://github.com/isrc-cas/flounder)
 * 带有`伪造控制流`功能的解密算法
 * 通过`编译优化`为每一个加密算法生成唯一的控制流
 * 通过`__COUNTER__` 宏为每一个加密算法生成唯一的`key`
