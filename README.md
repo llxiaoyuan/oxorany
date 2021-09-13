@@ -394,14 +394,10 @@ int main() {
 
 > 综上所述，在`oxorany`的帮助下，软件的安全性将会得到进一步的提高
 
-<br />
-
 ### 参考
 + [孤挺花（Armariris）-- 由上海交通大学密码与计算机安全实验室维护的LLVM混淆框架](https://github.com/hcygithub/Armariris)
 + [PLCT实验室维护的ollvm分支](https://github.com/isrc-cas/flounder)
 + [高度矢量化的 c++17 编译时字符串加密](https://github.com/JustasMasiulis/xorstr)
-
-<br />
 
 ### Github
 https://github.com/llxiaoyuan/oxorany
