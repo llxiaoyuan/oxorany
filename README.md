@@ -13,22 +13,39 @@
 
 > 我们综合了开源项目`ollvm`、`xorstr`一些实现思路，以及`c++14`标准中新加入的`constexpr`关键字和一些模板的知识，完成了编译时的任意常量的混淆`(可选)`和加密功能。
 
-> 在C++14之前，我们如果要对程序中的常量进行保护，
-> 
+> 在C++14之前，我们如果要对程序中的常量进行保护，我们首先对常量进行加密操作，这里以字符串`"some_data_or_string"`逐字节`-1`为例，然后将加密后的数据"rnld^c\`s\`^nq^rsqhmf"，写到代码里，同时进行逐字节`+1`解密。
+
+> 代码如下
+
+```C++
+char encrypted[] = {"rnld^c`s`^nq^rsqhmf"};
+char key = 0x1;
+for (size_t i = 0; i < strlen(encrypted); i++) {
+	encrypted[i] += key;
+}
+//output: some_data_or_string
+printf("%s\n", encrypted);
+```
+
+> 上述的方法只能在需要被保护的数据的数量比较少时使用，当数据量增大，繁琐的加密过程所占用的时间也会水涨船高，而且使得代码的可读性、可维护性大大降低。而且不可能为每一个数据都单独设计一个解密算法和key，使得通用的解密工具更易于编写。
+
+> **随着`oxorany`的出现，上述过程将被改变**
 
 ### 特性
 * 所有的加密过程均在编译时完成
+* 所有的解密过程均在栈内完成，无法通过运行时`dump`获得解密后的数据，不同于 [Armariris](https://github.com/GoSSIP-SJTU/Armariris)、[flounder](https://github.com/isrc-cas/flounder)
 * 带有`伪造控制流`功能的解密算法
 * 通过`编译优化`为每一个加密算法生成唯一的控制流
 * 通过`__COUNTER__` 宏为每一个加密算法生成唯一的`key`
 * 通过`__TIME__`宏动态产生`key`
-* 代码经过精心编写，足以破坏堆栈以对抗`IDA` `F5`
+* 代码经过**精心编写**，足以破坏堆栈以对抗`IDA` `F5`
 * 基于堆栈变量的`不透明谓词`
 * 模糊数据长度
 * 由于解密算法的大部分代码不会被执行，所以对于效率的影响并不会特别大
-* 解密算法的复杂度仍有提升空间
+* **解密算法的复杂度仍有提升空间**
 * 因为`C++`中常量的`隐式转换`特性，某些常量可能需要强制类型转换
 * 简单易用，且在`msvc`、`clang`、`gcc`中测试通过
+* **不能保证数据会被内联到代码段**，[想要内联](https://github.com/llxiaoyuan/xorstr)
 
 ### 支持的数据类型
 
@@ -377,13 +394,10 @@ int main() {
 
 > 综上所述，在`oxorany`的帮助下，软件的安全性将会得到进一步的提高
 
-<br />
-
 ### 参考
++ [孤挺花（Armariris）-- 由上海交通大学密码与计算机安全实验室维护的LLVM混淆框架](https://github.com/GoSSIP-SJTU/Armariris)
 + [PLCT实验室维护的ollvm分支](https://github.com/isrc-cas/flounder)
 + [高度矢量化的 c++17 编译时字符串加密](https://github.com/JustasMasiulis/xorstr)
-
-<br />
 
 ### Github
 https://github.com/llxiaoyuan/oxorany
