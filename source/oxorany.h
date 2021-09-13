@@ -55,10 +55,10 @@ SOFTWARE.
 #define OXORANY_FORCEINLINE __attribute__((always_inline)) inline
 #endif
 
-#ifndef _DEBUG
-#define oxorany(any) _lxy_oxor_any_::oxor_any<decltype(_lxy_oxor_any_::typeofs(any)), _lxy_oxor_any_::array_size(any), __COUNTER__>(any, std::make_index_sequence<sizeof(decltype(any))>()).get()
-#else
+#ifdef _DEBUG
 #define oxorany
+#else
+#define oxorany(any) _lxy_oxor_any_::oxor_any<decltype(_lxy_oxor_any_::typeofs(any)), _lxy_oxor_any_::array_size(any), __COUNTER__>(any, std::make_index_sequence<sizeof(decltype(any))>()).get()
 #endif
 
 namespace _lxy_oxor_any_ {
