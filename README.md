@@ -32,6 +32,7 @@ printf("%s\n", encrypted);
 > **随着`oxorany`的出现，上述过程将被改变**
 
 ### 特性
+* **支持任意平台**
 * 所有的加密过程均在编译时完成
 * 所有的解密过程均在栈内完成，无法通过运行时`dump`获得解密后的数据，不同于 [Armariris](https://github.com/GoSSIP-SJTU/Armariris)、[flounder](https://github.com/isrc-cas/flounder)
 * 带有`伪造控制流`功能的解密算法
