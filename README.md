@@ -61,8 +61,8 @@ printf("%s\n", encrypted);
 - [x] `msvc`
 - [x] `clang`(`llvm`)
 - [x] `gcc`
-- [x] `android ndk`
-- [x] `leetcode gcc`
+- [x] `android ndk`(支持安卓)
+- [x] `leetcode gcc`(支持类似的云编译器)
 - [x] `...`
 
 <br />
