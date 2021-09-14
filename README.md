@@ -50,7 +50,7 @@ printf("%s\n", encrypted);
 
 ### 支持的数据类型
 
-- [x] 字符串(`wchar_t*` `char*`)
+- [x] 字符串(`char*` `wchar_t*`)
 - [x] 宏
 - [x] 枚举
 - [x] 整数(`int8_t` `int16_t` `int32_t` `int64_t` `uint8_t` `uint16_t` `uint32_t` `uint64_t`)
