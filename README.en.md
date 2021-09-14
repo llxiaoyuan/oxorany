@@ -27,7 +27,6 @@ for (size_t i = 0; i < strlen(encrypted); i++) {
 printf("%s\n", encrypted);
 ```
 
-
 > The above method can only be used when the amount of data to be protected is relatively small, and when the amount of data increases, the time taken by the tedious encryption process will also rise, and it makes the readability and maintainability of the code greatly reduced. And it is not possible to design a separate decryption algorithm and key for each data, which makes a general decryption tool easier to write.
 
 > **With the advent of `oxorany`, the above process will be changed**
