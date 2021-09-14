@@ -32,7 +32,7 @@ printf("%s\n", encrypted);
 > **随着`oxorany`的出现，上述过程将被改变**
 
 ### 特性
-* **支持任意平台**
+* **支持任意平台(`C++14`)**
 * **较高的可操作性，使用`__asm` `_emit`可进一步提高逆向难度**
 * 所有的加密过程均在编译时完成
 * 所有的解密过程均在栈内完成，无法通过运行时`dump`获得解密后的数据，不同于 [Armariris](https://github.com/GoSSIP-SJTU/Armariris)、[flounder](https://github.com/isrc-cas/flounder)
