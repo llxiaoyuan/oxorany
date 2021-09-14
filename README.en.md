@@ -58,15 +58,11 @@ printf("%s\n", encrypted);
 
 ### Compilers Supported
 
-
 - [x] `msvc`
 - [x] `clang`(`llvm`)
 - [x] `gcc`
-- [x] `ndk`
+- [x] `android ndk`
 - [x] `leetcode gcc`
-
-![S5(LFNXH~_KM6UH@L}U(CY6](https://user-images.githubusercontent.com/36320938/133314352-50d434a3-d5ae-4e0d-8504-1e1215be19e6.png)
-
 - [x] `...`
 
 <br />
@@ -182,9 +178,15 @@ int main() {
 
 <br />
 
-### `Control Flow Graph` in `IDA` after compilation using `ndk`
+### `Control Flow Graph` in `IDA` after compilation using `android ndk`
 
 ![image](https://user-images.githubusercontent.com/36320938/133132325-d70fe632-5e7e-407a-a42c-7594b788507a.png)
+
+<br />
+
+### Testing with `leetcode gcc` ([Sword Pointing Offer 05. replace space](https://leetcode-cn.com/problems/ti-huan-kong-ge-lcof/comments/))
+
+![S5(LFNXH~_KM6UH@L}U(CY6](https://user-images.githubusercontent.com/36320938/133314352-50d434a3-d5ae-4e0d-8504-1e1215be19e6.png)
 
 <br />
 
