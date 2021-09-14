@@ -61,7 +61,7 @@ printf("%s\n", encrypted);
 - [x] `clang`(`llvm`)
 - [x] `gcc`
 - [x] `ndk`
-- [x] `leetcode gcc`(力扣)
+- [x] `leetcode gcc`([剑指 Offer 05. 替换空格](https://leetcode-cn.com/problems/ti-huan-kong-ge-lcof/comments/))
 
 ![S5(LFNXH~_KM6UH@L}U(CY6](https://user-images.githubusercontent.com/36320938/133314352-50d434a3-d5ae-4e0d-8504-1e1215be19e6.png)
 
