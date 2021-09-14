@@ -32,6 +32,7 @@ printf("%s\n", encrypted);
 > **With the advent of `oxorany`, the above process will be changed**
 
 ### Features
+* **Support any platform**
 * Obfuscated encryption of any constants at compile time
 * All the decryption process is done inside the stack, and the decrypted data cannot be obtained through runtime `dump`，unlike [Armariris](https://github.com/GoSSIP-SJTU/Armariris)、[flounder](https://github.com/isrc-cas/flounder)
 * Decryption algorithm with `Bogus Control Flow` like `ollvm`
