@@ -65,7 +65,6 @@ printf("%s\n", encrypted);
 
 ![S5(LFNXH~_KM6UH@L}U(CY6](https://user-images.githubusercontent.com/36320938/133314352-50d434a3-d5ae-4e0d-8504-1e1215be19e6.png)
 
-
 - [x] `...`
 
 <br />
