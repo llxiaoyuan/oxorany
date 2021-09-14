@@ -60,11 +60,8 @@ printf("%s\n", encrypted);
 - [x] `msvc`
 - [x] `clang`(`llvm`)
 - [x] `gcc`
-- [x] `ndk`
-- [x] `leetcode gcc`([剑指 Offer 05. 替换空格](https://leetcode-cn.com/problems/ti-huan-kong-ge-lcof/comments/))
-
-![S5(LFNXH~_KM6UH@L}U(CY6](https://user-images.githubusercontent.com/36320938/133314352-50d434a3-d5ae-4e0d-8504-1e1215be19e6.png)
-
+- [x] `android ndk`
+- [x] `leetcode gcc`
 - [x] `...`
 
 <br />
@@ -180,9 +177,15 @@ int main() {
 
 <br />
 
-### 使用`ndk`编译后`IDA`中的`控制流程图`
+### 使用`android ndk`编译后`IDA`中的`控制流程图`
 
 ![image](https://user-images.githubusercontent.com/36320938/133132325-d70fe632-5e7e-407a-a42c-7594b788507a.png)
+
+<br />
+
+### 使用`leetcode gcc`进行测试 ([剑指 Offer 05. 替换空格](https://leetcode-cn.com/problems/ti-huan-kong-ge-lcof/comments/))
+
+![S5(LFNXH~_KM6UH@L}U(CY6](https://user-images.githubusercontent.com/36320938/133314352-50d434a3-d5ae-4e0d-8504-1e1215be19e6.png)
 
 <br />
 
