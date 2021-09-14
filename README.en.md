@@ -50,7 +50,7 @@ printf("%s\n", encrypted);
 
 ### Data types supported
 
-- [x] String(`wchar_t*` `char*`)
+- [x] String(`char*` `wchar_t*`)
 - [x] Macro
 - [x] Enume
 - [x] Integer(`int8_t` `int16_t` `int32_t` `int64_t` `uint8_t` `uint16_t` `uint32_t` `uint64_t`)
