@@ -33,6 +33,7 @@ printf("%s\n", encrypted);
 
 ### 特性
 * **支持任意平台**
+* **较高的可操作性，使用`__asm` `_emit`可进一步提高逆向难度**
 * 所有的加密过程均在编译时完成
 * 所有的解密过程均在栈内完成，无法通过运行时`dump`获得解密后的数据，不同于 [Armariris](https://github.com/GoSSIP-SJTU/Armariris)、[flounder](https://github.com/isrc-cas/flounder)
 * 带有`伪造控制流`功能的解密算法
