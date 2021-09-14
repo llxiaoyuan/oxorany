@@ -33,6 +33,7 @@ printf("%s\n", encrypted);
 
 ### Features
 * **Support any platform**
+* **Higher operability, using `__asm` `_emit` can further increase the difficulty of reverse**
 * Obfuscated encryption of any constants at compile time
 * All the decryption process is done inside the stack, and the decrypted data cannot be obtained through runtime `dump`，unlike [Armariris](https://github.com/GoSSIP-SJTU/Armariris)、[flounder](https://github.com/isrc-cas/flounder)
 * Decryption algorithm with `Bogus Control Flow` like `ollvm`
