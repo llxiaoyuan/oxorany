@@ -55,7 +55,7 @@ printf("%s\n", encrypted);
 - [x] 宏
 - [x] 枚举
 - [x] 整数(`int8_t` `int16_t` `int32_t` `int64_t` `uint8_t` `uint16_t` `uint32_t` `uint64_t`)
-- [x] 浮点(`float` `double`)
+- [ ] 浮点(`float` `double`)(**会保留原数据**)
 
 ### 支持的编译器
 
