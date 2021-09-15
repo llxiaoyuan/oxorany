@@ -29,8 +29,10 @@ SOFTWARE.
 #ifndef OXORANY_H
 #define OXORANY_H
 
+#if _KERNEL_MODE
 #ifndef _VCRUNTIME_DISABLED_WARNINGS
 #define _VCRUNTIME_DISABLED_WARNINGS
+#endif
 #endif
 
 #include <stdint.h>
