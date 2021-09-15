@@ -29,6 +29,10 @@ SOFTWARE.
 #ifndef OXORANY_H
 #define OXORANY_H
 
+#ifndef _VCRUNTIME_DISABLED_WARNINGS
+#define _VCRUNTIME_DISABLED_WARNINGS
+#endif
+
 #include <stdint.h>
 
 #if _WIN32 || _WIN64
@@ -555,12 +559,12 @@ namespace _lxy_oxor_any_ {
 								continue;
 							}
 							else {
-								stack_x = stack_y + limit<key * __COUNTER__>();
-								stack_y = stack_x + limit<key * __COUNTER__>();
+								stack_x = stack_y + limit<key* __COUNTER__>();
+								stack_y = stack_x + limit<key* __COUNTER__>();
 							}
 
 							if (stack_x > stack_y + limit<key * __COUNTER__>()) {
-								decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+								decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 								goto loc_unreachable_9;
 							}
 							else if (stack_x > stack_y + limit<key * __COUNTER__>()) {
@@ -673,4 +677,4 @@ namespace _lxy_oxor_any_ {
 	};
 }
 
-#endif
+#endif // OXORANY_H
