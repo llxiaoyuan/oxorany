@@ -61,8 +61,10 @@ SOFTWARE.
 
 #ifdef _DEBUG
 #define oxorany
+#define oxorvar
 #else
 #define oxorany(any) _lxy_oxor_any_::oxor_any<decltype(_lxy_oxor_any_::typeofs(any)), _lxy_oxor_any_::array_size(any), __COUNTER__>(any, _lxy_oxor_any_::makeIndexSequence<sizeof(decltype(any))>()).get()
+#define oxorvar(var) ((var) + oxorany(0))
 #endif
 
 namespace _lxy_oxor_any_ {
