@@ -66,6 +66,7 @@ SOFTWARE.
 #endif
 
 namespace _lxy_oxor_any_ {
+	
 	template<int... i>
 	struct index_sequence {};
 
