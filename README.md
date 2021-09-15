@@ -54,8 +54,8 @@ printf("%s\n", encrypted);
 - [x] 字符串(`char*` `wchar_t*`)
 - [x] 宏
 - [x] 枚举
-- [x] 字符
-- [x] 指针
+- [x] 字符(`char` `wchar_t`)
+- [x] 指针(`NULL` `nullptr`)
 - [x] 整数(`int8_t` `int16_t` `int32_t` `int64_t` `uint8_t` `uint16_t` `uint32_t` `uint64_t`)
 - [ ] 浮点(`float` `double`)(**会保留原数据**)
 
@@ -86,12 +86,13 @@ enum class MyEnum : int {
 
 int main() {
     // output:
-    //1 1 2 a 00000000 00000000 12 1234 12345678 1234567887654321 1.000000 2.000000
-    //string u8 string wstring raw string raw wstring abcd
-    printf(oxorany("%d %d %d %c %p %p %hhx %hx %x %llx %f %lf\n%s %s %S %s %S %s\n")  //string
+    // 1 1 2 c w 00000000 00000000 12 1234 12345678 1234567887654321 1.000000 2.000000
+    // string u8 string wstring raw string raw wstring abcd
+    printf(oxorany("%d %d %d %c %C %p %p %hhx %hx %x %llx %f %lf\n%s %s %S %s %S %s\n")  //string
            , oxorany(NUM_1)                                                           //macro
            , oxorany(MyEnum::first), oxorany(MyEnum::second)                          //enum
-           , oxorany('a')                                                             //char
+           , oxorany('c')                                                             //char
+           , oxorany(L'w')                                                            //wchar_t
            , oxorany(NULL), oxorany(nullptr)                                          //pointer
            , oxorany(0x12)                                                            //int8_t
            , oxorany(0x1234)                                                          //int16_t
