@@ -1,6 +1,6 @@
 /*
 
-@author llxiaoyuan
+@author llxiaoyuan https://github.com/llxiaoyuan/oxorany
 
 MIT License
 
@@ -29,9 +29,7 @@ SOFTWARE.
 #ifndef OXORANY_H
 #define OXORANY_H
 
-#include <cstddef>
-#include <utility>
-#include <cstdint>
+#include <stdint.h>
 
 #if _WIN32 || _WIN64
 #if _WIN64
@@ -58,11 +56,19 @@ SOFTWARE.
 #ifdef _DEBUG
 #define oxorany
 #else
-#define oxorany(any) _lxy_oxor_any_::oxor_any<decltype(_lxy_oxor_any_::typeofs(any)), _lxy_oxor_any_::array_size(any), __COUNTER__>(any, std::make_index_sequence<sizeof(decltype(any))>()).get()
+#define oxorany(any) _lxy_oxor_any_::oxor_any<decltype(_lxy_oxor_any_::typeofs(any)), _lxy_oxor_any_::array_size(any), __COUNTER__>(any, _lxy_oxor_any_::make_index_sequence<sizeof(decltype(any))>()).get()
 #endif
 
 namespace _lxy_oxor_any_ {
-	
+	template<int... i>
+	struct index_sequence {};
+
+	template<int n, int... i>
+	struct make_index_sequence : make_index_sequence<n - 1, n - 1, i...> {};
+
+	template<int... i>
+	struct make_index_sequence<0, i...> : index_sequence<i...> {};
+
 	size_t& X();
 
 	size_t& Y();
@@ -112,10 +118,10 @@ namespace _lxy_oxor_any_ {
 #endif 
 
 	template<typename T, size_t size>
-	static OXORANY_FORCEINLINE constexpr size_t array_size(const T(&a)[size]) { return size; }
+	static OXORANY_FORCEINLINE constexpr size_t array_size(const T(&)[size]) { return size; }
 
 	template<typename T>
-	static OXORANY_FORCEINLINE constexpr size_t array_size(T a) { return 0; }
+	static OXORANY_FORCEINLINE constexpr size_t array_size(T) { return 0; }
 
 	template<typename T, size_t size>
 	static inline T typeofs(const T(&)[size]);
@@ -149,7 +155,7 @@ namespace _lxy_oxor_any_ {
 #ifndef OXORANY_DISABLE_OBFUSCATION
 
 		uint8_t source;
-		uint8_t decrypted;
+		uint8_t decrypted; //do not assign initial value
 		size_t stack_x;
 		size_t stack_y;
 
@@ -162,101 +168,101 @@ namespace _lxy_oxor_any_ {
 		loc_start_3:
 			if (stack_x <= i) {
 				if (stack_x < stack_y + limit<key * __COUNTER__>()) {
-					decrypted = decrypt_byte<key * __COUNTER__>(source, i);//fake
+					decrypted = decrypt_byte<key* __COUNTER__>(source, i);//fake
 				}
 				else if (stack_x == stack_y + limit<key * __COUNTER__>() % 1 + 1) {
 					//unreachable
-					decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+					decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 					goto loc_unreachable_9;
 				}
 				else if (stack_x == stack_y + limit<key * __COUNTER__>() % 2 + 1) {
 					//unreachable
-					decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+					decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 					goto loc_unreachable_8;
 				}
 				else if (stack_x == stack_y + limit<key * __COUNTER__>() % 3 + 1) {
 					//unreachable
-					decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+					decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 					goto loc_unreachable_7;
 				}
 				else if (stack_x == stack_y + limit<key * __COUNTER__>() % 4 + 1) {
 					//unreachable
-					decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+					decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 					goto loc_unreachable_6;
 				}
 				else if (stack_x == stack_y + limit<key * __COUNTER__>() % 5 + 1) {
 					//unreachable
-					decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+					decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 					goto loc_unreachable_5;
 				}
 				else if (stack_x == stack_y + limit<key * __COUNTER__>() % 6 + 1) {
 					//unreachable
-					decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+					decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 					goto loc_unreachable_4;
 				}
 				else if (stack_x == stack_y + limit<key * __COUNTER__>() % 7 + 1) {
 					//unreachable
-					decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+					decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 					goto loc_unreachable_3;
 				}
 				else if (stack_x == stack_y + limit<key * __COUNTER__>() % 8 + 1) {
 					//unreachable
-					decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+					decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 					goto loc_unreachable_2;
 				}
 				else if (stack_x == stack_y + limit<key * __COUNTER__>() % 9 + 1) {
 					//unreachable
-					decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+					decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 					goto loc_unreachable_1;
 				}
 			loc_start_4:
 				if (stack_y <= i) {
 					if (stack_x < stack_y + limit<key * __COUNTER__>()) {
-						decrypted = decrypt_byte<key * __COUNTER__>(source, i);//fake
+						decrypted = decrypt_byte<key* __COUNTER__>(source, i);//fake
 					}
 					else if (stack_x == stack_y + limit<key * __COUNTER__>() % 1 + 1) {
 						//unreachable
-						decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+						decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 						goto loc_unreachable_1;
 					}
 					else if (stack_x == stack_y + limit<key * __COUNTER__>() % 2 + 1) {
 						//unreachable
-						decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+						decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 						goto loc_unreachable_2;
 					}
 					else if (stack_x == stack_y + limit<key * __COUNTER__>() % 3 + 1) {
 						//unreachable
-						decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+						decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 						goto loc_unreachable_3;
 					}
 					else if (stack_x == stack_y + limit<key * __COUNTER__>() % 4 + 1) {
 						//unreachable
-						decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+						decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 						goto loc_unreachable_4;
 					}
 					else if (stack_x == stack_y + limit<key * __COUNTER__>() % 5 + 1) {
 						//unreachable
-						decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+						decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 						goto loc_unreachable_5;
 					}
 					else if (stack_x == stack_y + limit<key * __COUNTER__>() % 6 + 1) {
 						//unreachable
-						decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+						decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 						goto loc_unreachable_6;
 					}
 					else if (stack_x == stack_y + limit<key * __COUNTER__>() % 7 + 1) {
 						//unreachable
-						decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+						decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 						goto loc_unreachable_7;
 					}
 					else if (stack_x == stack_y + limit<key * __COUNTER__>() % 8 + 1) {
 						//unreachable
-						decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+						decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 						goto loc_unreachable_8;
 					}
 					else if (stack_x == stack_y + limit<key * __COUNTER__>() % 9 + 1) {
 						//unreachable
-						decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+						decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 						goto loc_unreachable_9;
 					}
 				loc_start_5:
@@ -266,149 +272,149 @@ namespace _lxy_oxor_any_ {
 						}
 						else if (stack_x == stack_y + limit<key * __COUNTER__>() % 1 + 1) {
 							//unreachable
-							decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+							decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 							goto loc_unreachable_9;
 						}
 						else if (stack_x == stack_y + limit<key * __COUNTER__>() % 2 + 1) {
 							//unreachable
-							decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+							decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 							goto loc_unreachable_8;
 						}
 						else if (stack_x == stack_y + limit<key * __COUNTER__>() % 3 + 1) {
 							//unreachable
-							decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+							decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 							goto loc_unreachable_7;
 						}
 						else if (stack_x == stack_y + limit<key * __COUNTER__>() % 4 + 1) {
 							//unreachable
-							decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+							decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 							goto loc_unreachable_6;
 						}
 						else if (stack_x == stack_y + limit<key * __COUNTER__>() % 5 + 1) {
 							//unreachable
-							decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+							decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 							goto loc_unreachable_5;
 						}
 						else if (stack_x == stack_y + limit<key * __COUNTER__>() % 6 + 1) {
 							//unreachable
-							decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+							decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 							goto loc_unreachable_4;
 						}
 						else if (stack_x == stack_y + limit<key * __COUNTER__>() % 7 + 1) {
 							//unreachable
-							decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+							decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 							goto loc_unreachable_3;
 						}
 						else if (stack_x == stack_y + limit<key * __COUNTER__>() % 8 + 1) {
 							//unreachable
-							decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+							decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 							goto loc_unreachable_2;
 						}
 						else if (stack_x == stack_y + limit<key * __COUNTER__>() % 9 + 1) {
 							//unreachable
-							decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+							decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 							goto loc_unreachable_1;
 						}
 					loc_start_6:
 						if (stack_x + stack_y != limit<key * __COUNTER__>()) {
 							if (stack_x > stack_y + limit<key * __COUNTER__>()) {
 								//unreachable
-								decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+								decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 							}
 							else if (stack_x == stack_y + limit<key * __COUNTER__>() % 1 + 1) {
 								//unreachable
-								decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+								decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 								goto loc_unreachable_1;
 							}
 							else if (stack_x == stack_y + limit<key * __COUNTER__>() % 2 + 1) {
 								//unreachable
-								decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+								decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 								goto loc_unreachable_2;
 							}
 							else if (stack_x == stack_y + limit<key * __COUNTER__>() % 3 + 1) {
 								//unreachable
-								decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+								decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 								goto loc_unreachable_3;
 							}
 							else if (stack_x == stack_y + limit<key * __COUNTER__>() % 4 + 1) {
 								//unreachable
-								decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+								decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 								goto loc_unreachable_4;
 							}
 							else if (stack_x == stack_y + limit<key * __COUNTER__>() % 5 + 1) {
 								//unreachable
-								decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+								decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 								goto loc_unreachable_5;
 							}
 							else if (stack_x == stack_y + limit<key * __COUNTER__>() % 6 + 1) {
 								//unreachable
-								decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+								decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 								goto loc_unreachable_6;
 							}
 							else if (stack_x == stack_y + limit<key * __COUNTER__>() % 7 + 1) {
 								//unreachable
-								decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+								decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 								goto loc_unreachable_7;
 							}
 							else if (stack_x == stack_y + limit<key * __COUNTER__>() % 8 + 1) {
 								//unreachable
-								decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+								decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 								goto loc_unreachable_8;
 							}
 							else if (stack_x == stack_y + limit<key * __COUNTER__>() % 9 + 1) {
 								//unreachable
-								decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+								decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 								goto loc_unreachable_9;
 							}
 						loc_start_7:
 							if (stack_x < limit<key * __COUNTER__>()) {
 								if (stack_x > stack_y + limit<key * __COUNTER__>()) {
 									//unreachable
-									decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+									decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 								}
 								else if (stack_x == stack_y + limit<key * __COUNTER__>() % 1 + 1) {
 									//unreachable
-									decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+									decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 									goto loc_unreachable_9;
 								}
 								else if (stack_x == stack_y + limit<key * __COUNTER__>() % 2 + 1) {
 									//unreachable
-									decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+									decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 									goto loc_unreachable_8;
 								}
 								else if (stack_x == stack_y + limit<key * __COUNTER__>() % 3 + 1) {
 									//unreachable
-									decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+									decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 									goto loc_unreachable_7;
 								}
 								else if (stack_x == stack_y + limit<key * __COUNTER__>() % 4 + 1) {
 									//unreachable
-									decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+									decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 									goto loc_unreachable_6;
 								}
 								else if (stack_x == stack_y + limit<key * __COUNTER__>() % 5 + 1) {
 									//unreachable
-									decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+									decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 									goto loc_unreachable_5;
 								}
 								else if (stack_x == stack_y + limit<key * __COUNTER__>() % 6 + 1) {
 									//unreachable
-									decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+									decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 									goto loc_unreachable_4;
 								}
 								else if (stack_x == stack_y + limit<key * __COUNTER__>() % 7 + 1) {
 									//unreachable
-									decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+									decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 									goto loc_unreachable_3;
 								}
 								else if (stack_x == stack_y + limit<key * __COUNTER__>() % 8 + 1) {
 									//unreachable
-									decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+									decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 									goto loc_unreachable_2;
 								}
 								else if (stack_x == stack_y + limit<key * __COUNTER__>() % 9 + 1) {
 									//unreachable
-									decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+									decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 									goto loc_unreachable_1;
 								}
 							loc_start_8:
@@ -418,10 +424,10 @@ namespace _lxy_oxor_any_ {
 								}
 								else {
 									//unreachable
-									decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+									decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 									decrypted += decrypted;
 								loc_unreachable_1:
-									buffer[i] = decrypt_byte<key * __COUNTER__>(source, i);
+									buffer[i] = decrypt_byte<key* __COUNTER__>(source, i);
 								loc_unreachable_2:
 									stack_y++;
 								loc_unreachable_3:
@@ -430,10 +436,10 @@ namespace _lxy_oxor_any_ {
 							}
 							else {
 								//unreachable
-								decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+								decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 								decrypted += buffer[i];
 							loc_unreachable_4:
-								buffer[i] = decrypt_byte<key * __COUNTER__>(source, i);
+								buffer[i] = decrypt_byte<key* __COUNTER__>(source, i);
 								buffer[i] += decrypted;
 							loc_unreachable_5:
 								stack_x += stack_y;
@@ -444,15 +450,15 @@ namespace _lxy_oxor_any_ {
 						}
 						else {
 							//unreachable
-							decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+							decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 							decrypted -= buffer[i];
 						loc_unreachable_7:
-							buffer[i] = decrypt_byte<key * __COUNTER__>(source, i);
+							buffer[i] = decrypt_byte<key* __COUNTER__>(source, i);
 							stack_y++;
 							i -= buffer[i];
 							i -= stack_y;
 						loc_unreachable_8:
-							buffer[i] = decrypt_byte<key * __COUNTER__>(source, i);
+							buffer[i] = decrypt_byte<key* __COUNTER__>(source, i);
 							stack_x++;
 							i--;
 							i -= stack_x;
@@ -466,83 +472,83 @@ namespace _lxy_oxor_any_ {
 						//unreachable
 						while (true) {
 							if (stack_x == stack_y + limit<key * __COUNTER__>()) {
-								decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+								decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 								goto loc_unreachable_1;
 							}
 							else if (stack_x == stack_y + limit<key * __COUNTER__>()) {
-								decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+								decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 								goto loc_unreachable_2;
 							}
 							else if (stack_x == stack_y + limit<key * __COUNTER__>()) {
-								decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+								decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 								goto loc_unreachable_3;
 							}
 							else if (stack_x == stack_y + limit<key * __COUNTER__>()) {
-								decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+								decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 								goto loc_unreachable_4;
 							}
 							else if (stack_x == stack_y + limit<key * __COUNTER__>()) {
-								decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+								decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 								goto loc_unreachable_5;
 							}
 							else if (stack_x == stack_y + limit<key * __COUNTER__>()) {
-								decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+								decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 								goto loc_unreachable_6;
 							}
 							else if (stack_x == stack_y + limit<key * __COUNTER__>()) {
-								decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+								decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 								goto loc_unreachable_7;
 							}
 							else if (stack_x == stack_y + limit<key * __COUNTER__>()) {
-								decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+								decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 								goto loc_unreachable_8;
 							}
 							else if (stack_x == stack_y + limit<key * __COUNTER__>()) {
-								decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+								decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 								goto loc_unreachable_9;
 							}
 							else if (stack_x == stack_y + limit<key * __COUNTER__>()) {
 								continue;
 							}
 							else {
-								stack_x = stack_y + limit<key * __COUNTER__>();
-								stack_y = stack_x + limit<key * __COUNTER__>();
+								stack_x = stack_y + limit<key* __COUNTER__>();
+								stack_y = stack_x + limit<key* __COUNTER__>();
 							}
 
 							if (stack_x < stack_y + limit<key * __COUNTER__>()) {
-								decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+								decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 								goto loc_start_1;
 							}
 							else if (stack_x < stack_y + limit<key * __COUNTER__>()) {
-								decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+								decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 								goto loc_start_2;
 							}
 							else if (stack_x < stack_y + limit<key * __COUNTER__>()) {
-								decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+								decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 								goto loc_start_3;
 							}
 							else if (stack_x < stack_y + limit<key * __COUNTER__>()) {
-								decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+								decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 								goto loc_start_4;
 							}
 							else if (stack_x < stack_y + limit<key * __COUNTER__>()) {
-								decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+								decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 								goto loc_start_5;
 							}
 							else if (stack_x < stack_y + limit<key * __COUNTER__>()) {
-								decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+								decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 								goto loc_start_6;
 							}
 							else if (stack_x < stack_y + limit<key * __COUNTER__>()) {
-								decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+								decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 								goto loc_start_7;
 							}
 							else if (stack_x < stack_y + limit<key * __COUNTER__>()) {
-								decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+								decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 								goto loc_start_8;
 							}
 							else if (stack_x < stack_y + limit<key * __COUNTER__>()) {
-								decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+								decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 								goto loc_start_9;
 							}
 							else if (stack_x < stack_y + limit<key * __COUNTER__>()) {
@@ -558,43 +564,43 @@ namespace _lxy_oxor_any_ {
 								goto loc_unreachable_9;
 							}
 							else if (stack_x > stack_y + limit<key * __COUNTER__>()) {
-								decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+								decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 								goto loc_unreachable_8;
 							}
 							else if (stack_x > stack_y + limit<key * __COUNTER__>()) {
-								decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+								decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 								goto loc_unreachable_7;
 							}
 							else if (stack_x > stack_y + limit<key * __COUNTER__>()) {
-								decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+								decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 								goto loc_unreachable_6;
 							}
 							else if (stack_x > stack_y + limit<key * __COUNTER__>()) {
-								decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+								decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 								goto loc_unreachable_5;
 							}
 							else if (stack_x > stack_y + limit<key * __COUNTER__>()) {
-								decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+								decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 								goto loc_unreachable_4;
 							}
 							else if (stack_x > stack_y + limit<key * __COUNTER__>()) {
-								decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+								decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 								goto loc_unreachable_3;
 							}
 							else if (stack_x > stack_y + limit<key * __COUNTER__>()) {
-								decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+								decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 								goto loc_unreachable_2;
 							}
 							else if (stack_x > stack_y + limit<key * __COUNTER__>()) {
-								decrypted = decrypt_byte<key * __COUNTER__>(source, i);
+								decrypted = decrypt_byte<key* __COUNTER__>(source, i);
 								goto loc_unreachable_1;
 							}
 							else if (stack_x > stack_y + limit<key * __COUNTER__>()) {
 								continue;
 							}
 							else {
-								stack_x = stack_y + limit<key * __COUNTER__>();
-								stack_y = stack_x + limit<key * __COUNTER__>();
+								stack_x = stack_y + limit<key* __COUNTER__>();
+								stack_y = stack_x + limit<key* __COUNTER__>();
 							}
 						}
 					}
@@ -639,7 +645,7 @@ namespace _lxy_oxor_any_ {
 	public:
 
 		template<size_t... indices>
-		OXORANY_FORCEINLINE constexpr oxor_any(const any_t(&any)[ary_size], std::index_sequence<indices...>) :
+		OXORANY_FORCEINLINE constexpr oxor_any(const any_t(&any)[ary_size], index_sequence<indices...>) :
 			buffer{ encrypt_byte<key>(((uint8_t*)&any)[indices], indices)... } {
 		}
 
@@ -659,7 +665,7 @@ namespace _lxy_oxor_any_ {
 	public:
 
 		template<size_t... indices>
-		OXORANY_FORCEINLINE constexpr oxor_any(any_t any, std::index_sequence<indices...>) :
+		OXORANY_FORCEINLINE constexpr oxor_any(any_t any, index_sequence<indices...>) :
 			buffer{ encrypt_byte<key>(reinterpret_cast<uint8_t*>(&any)[indices], indices)... } {
 		}
 
