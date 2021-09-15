@@ -62,19 +62,26 @@ SOFTWARE.
 #ifdef _DEBUG
 #define oxorany
 #else
-#define oxorany(any) _lxy_oxor_any_::oxor_any<decltype(_lxy_oxor_any_::typeofs(any)), _lxy_oxor_any_::array_size(any), __COUNTER__>(any, _lxy_oxor_any_::make_index_sequence<sizeof(decltype(any))>()).get()
+#define oxorany(any) _lxy_oxor_any_::oxor_any<decltype(_lxy_oxor_any_::typeofs(any)), _lxy_oxor_any_::array_size(any), __COUNTER__>(any, _lxy_oxor_any_::makeIndexSequence<sizeof(decltype(any))>()).get()
 #endif
 
 namespace _lxy_oxor_any_ {
-	
-	template<int... i>
-	struct index_sequence {};
 
-	template<int n, int... i>
-	struct make_index_sequence : make_index_sequence<n - 1, n - 1, i...> {};
+	template <size_t ...>
+	struct indexSequence {
+	};
 
-	template<int... i>
-	struct make_index_sequence<0, i...> : index_sequence<i...> {};
+	template <size_t N, size_t ... Next>
+	struct indexSequenceHelper : public indexSequenceHelper<N - 1U, N - 1U, Next...> {
+	};
+
+	template <size_t ... Next>
+	struct indexSequenceHelper<0U, Next ... > {
+		using type = indexSequence<Next ... >;
+	};
+
+	template <size_t N>
+	using makeIndexSequence = typename indexSequenceHelper<N>::type;
 
 	size_t& X();
 
@@ -652,7 +659,7 @@ namespace _lxy_oxor_any_ {
 	public:
 
 		template<size_t... indices>
-		OXORANY_FORCEINLINE constexpr oxor_any(const any_t(&any)[ary_size], index_sequence<indices...>) :
+		OXORANY_FORCEINLINE constexpr oxor_any(const any_t(&any)[ary_size], indexSequence<indices...>) :
 			buffer{ encrypt_byte<key>(((uint8_t*)&any)[indices], indices)... } {
 		}
 
@@ -672,7 +679,7 @@ namespace _lxy_oxor_any_ {
 	public:
 
 		template<size_t... indices>
-		OXORANY_FORCEINLINE constexpr oxor_any(any_t any, index_sequence<indices...>) :
+		OXORANY_FORCEINLINE constexpr oxor_any(any_t any, indexSequence<indices...>) :
 			buffer{ encrypt_byte<key>(reinterpret_cast<uint8_t*>(&any)[indices], indices)... } {
 		}
 
