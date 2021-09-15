@@ -64,6 +64,7 @@ printf("%s\n", encrypted);
 - [x] `gcc`
 - [x] `android ndk`(支持安卓)
 - [x] `leetcode gcc`(支持类似的云编译器)
+- [x] `wdk`(支持Windows驱动程序)
 - [x] `...`
 
 <br />
@@ -141,6 +142,11 @@ MessageBoxA(oxorany(0), 0, 0, 0);
 ```C++
 MessageBoxA(oxorany((HWND)0), 0, 0, 0);
 ```
+
+<br />
+
+### 在`wdk`中使用时需启用`__TIME__`宏
+![image](https://user-images.githubusercontent.com/36320938/133402525-328e0515-6a30-473b-97cc-70905ca33606.png)
 
 <br />
 
