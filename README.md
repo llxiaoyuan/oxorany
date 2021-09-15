@@ -197,6 +197,12 @@ int main() {
 
 <br />
 
+### 使用`wdk`多次编译后`IDA`中的`控制流程图`
+
+![image](https://user-images.githubusercontent.com/36320938/133409709-7e176557-439c-4988-91ee-219b35ab80e0.png)
+
+<br />
+
 ### 不透明谓词
 
 > 不透明：`opaque`  
