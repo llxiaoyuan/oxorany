@@ -166,6 +166,8 @@ MessageBoxA(oxorany((HWND)0), 0, 0, 0);
 
 ### `编译优化`测试
 
+> 这里是测试`编译优化`对控制流程图的影响，期望的结果是每一次编译都拥有不同的`控制流程图`
+
 ```C++
 #include "oxorany.h"
 int main() {
