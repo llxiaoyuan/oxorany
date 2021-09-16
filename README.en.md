@@ -31,7 +31,7 @@ printf("%s\n", encrypted);
 
 > **With the advent of `oxorany`, the above process will be changed**
 
-### Features
+### 🎨 Features
 * **Support any platform(`C++14`)**
 * **Higher operability, using `__asm` `_emit` can further increase the difficulty of reverse**
 * Obfuscated encryption of any constants at compile time
