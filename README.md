@@ -114,7 +114,7 @@ int main() {
 
 <br />
 
-### 需要强制类型转换的示例
+### ⚙️ 需要强制类型转换的示例
 
 > 0 error 0 warning
 
@@ -153,7 +153,7 @@ MessageBoxA(oxorany((HWND)0), 0, 0, 0);
 
 <br />
 
-### ⚠ 在`wdk`中使用时需启用`__TIME__`宏
+### ⚙️ 在`wdk`中使用时需启用`__TIME__`宏
 ![image](https://user-images.githubusercontent.com/36320938/133402525-328e0515-6a30-473b-97cc-70905ca33606.png)
 
 <br />
