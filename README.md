@@ -71,7 +71,7 @@ printf("%s\n", encrypted);
 
 <br />
 
-### 使用
+### 🚀 使用
 ```C++
 #include <iostream>
 //#define OXORANY_DISABLE_OBFUSCATION
@@ -153,7 +153,7 @@ MessageBoxA(oxorany((HWND)0), 0, 0, 0);
 
 <br />
 
-### 在`wdk`中使用时需启用`__TIME__`宏
+### ⚠ 在`wdk`中使用时需启用`__TIME__`宏
 ![image](https://user-images.githubusercontent.com/36320938/133402525-328e0515-6a30-473b-97cc-70905ca33606.png)
 
 <br />
@@ -177,37 +177,37 @@ int main() {
 
 <br />
 
-### 使用`msvc`多次编译后`IDA`中的`控制流程图`
+### ✅ 使用`msvc`多次编译后`IDA`中的`控制流程图`
 
 ![image](https://user-images.githubusercontent.com/36320938/132721095-7ef48f99-37ef-407e-bf14-0ba3e72f1e25.png)
 
 <br />
 
-### 使用`clang`多次编译后`IDA`中的`控制流程图`
+### ✅ 使用`clang`多次编译后`IDA`中的`控制流程图`
 
 ![image](https://user-images.githubusercontent.com/36320938/132723406-dcf26a9e-9a12-4fa4-a0b7-4889861d7478.png)
 
 <br />
 
-### 使用`gcc`多次编译后`IDA`中的`控制流程图`
+### ✅ 使用`gcc`多次编译后`IDA`中的`控制流程图`
 
 ![image](https://user-images.githubusercontent.com/36320938/132799274-d816cc02-e913-43ab-b183-3a1c75fee5ce.png)
 
 <br />
 
-### 使用`android ndk`编译后`IDA`中的`控制流程图`
+### ✅ 使用`android ndk`编译后`IDA`中的`控制流程图`
 
 ![image](https://user-images.githubusercontent.com/36320938/133132325-d70fe632-5e7e-407a-a42c-7594b788507a.png)
 
 <br />
 
-### 使用`leetcode gcc`进行测试 ([剑指 Offer 05. 替换空格](https://leetcode-cn.com/problems/ti-huan-kong-ge-lcof/comments/))
+### ✅ 使用`leetcode gcc`进行测试 ([剑指 Offer 05. 替换空格](https://leetcode-cn.com/problems/ti-huan-kong-ge-lcof/comments/))
 
 ![S5(LFNXH~_KM6UH@L}U(CY6](https://user-images.githubusercontent.com/36320938/133314352-50d434a3-d5ae-4e0d-8504-1e1215be19e6.png)
 
 <br />
 
-### 使用`wdk`多次编译后`IDA`中的`控制流程图`
+### ✅ 使用`wdk`多次编译后`IDA`中的`控制流程图`
 
 ![image](https://user-images.githubusercontent.com/36320938/133409709-7e176557-439c-4988-91ee-219b35ab80e0.png)
 
