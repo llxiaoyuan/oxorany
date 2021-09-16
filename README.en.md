@@ -68,7 +68,7 @@ printf("%s\n", encrypted);
 
 <br />
 
-### Usage
+### 🚀 Usage
 ```C++
 #include <iostream>
 //#define OXORANY_DISABLE_OBFUSCATION
@@ -105,7 +105,7 @@ int main() {
 
 <br />
 
-### Need Cast
+### ⚙️ Need Cast
 
 > 0 error 0 warning
 
