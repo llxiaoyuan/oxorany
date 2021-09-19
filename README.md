@@ -215,7 +215,7 @@ int main() {
 
 ### ✅ 使用`ollvm`编译后`IDA`中的`控制流程图`
 
-![image](https://user-images.githubusercontent.com/36320938/133937928-35dc4516-e276-445e-900a-a401d99f01fc.png)
+![image](https://user-images.githubusercontent.com/36320938/133938052-cdccca0f-6bdf-4fc7-811f-f470bbea7663.png)
 
 <br />
 
