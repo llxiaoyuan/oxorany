@@ -62,7 +62,7 @@ printf("%s\n", encrypted);
 ### 支持的编译器
 
 - [x] `msvc`
-- [x] `clang`(`llvm`)
+- [x] `clang`(`llvm`)(**支持叠加ollvm**)
 - [x] `gcc`
 - [x] `android ndk`(**支持安卓**)
 - [x] `leetcode gcc`(**支持类似的云编译器**)
