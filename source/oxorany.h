@@ -63,12 +63,46 @@ SOFTWARE.
 #define oxorany
 #define oxorvar
 #else
-#define oxorany(any) _lxy_oxor_any_::oxor_any<decltype(_lxy_oxor_any_::typeofs(any)), _lxy_oxor_any_::array_size(any), __COUNTER__>(any, _lxy_oxor_any_::makeIndexSequence<sizeof(decltype(any))>()).get()
+#define oxorany(any) _lxy_oxor_any_::oxor_any<decltype(_lxy_oxor_any_::typeofs(any)), _lxy_oxor_any_::array_size(any), __COUNTER__>(any, _lxy_::make_index_sequence<sizeof(decltype(any))>()).get()
 #define oxorvar(var) ((var) + oxorany(0))
 #endif
 
+namespace _lxy_ {
+
+	// https://stackoverflow.com/a/32223343/16602611
+
+	template <size_t... Ints>
+	struct index_sequence {
+		using type = index_sequence;
+		using value_type = size_t;
+		static constexpr size_t size() noexcept { return sizeof...(Ints); }
+	};
+
+	// --------------------------------------------------------------------
+
+	template <class Sequence1, class Sequence2>
+	struct _merge_and_renumber;
+
+	template <size_t... I1, size_t... I2>
+	struct _merge_and_renumber<index_sequence<I1...>, index_sequence<I2...>>
+		: index_sequence<I1..., (sizeof...(I1) + I2)...>
+	{ };
+
+	// --------------------------------------------------------------------
+
+	template <size_t N>
+	struct make_index_sequence
+		: _merge_and_renumber<typename make_index_sequence<N / 2>::type,
+		typename make_index_sequence<N - N / 2>::type>
+	{ };
+
+	template<> struct make_index_sequence<0> : index_sequence<> { };
+	template<> struct make_index_sequence<1> : index_sequence<0> { };
+}
+
 namespace _lxy_oxor_any_ {
 
+	/*
 	template <size_t ...>
 	struct indexSequence {
 	};
@@ -84,6 +118,7 @@ namespace _lxy_oxor_any_ {
 
 	template <size_t N>
 	using makeIndexSequence = typename indexSequenceHelper<N>::type;
+	*/
 
 	size_t& X();
 
@@ -661,7 +696,7 @@ namespace _lxy_oxor_any_ {
 	public:
 
 		template<size_t... indices>
-		OXORANY_FORCEINLINE constexpr oxor_any(const any_t(&any)[ary_size], indexSequence<indices...>) :
+		OXORANY_FORCEINLINE constexpr oxor_any(const any_t(&any)[ary_size], _lxy_::index_sequence<indices...>) :
 			buffer{ encrypt_byte<key>(((uint8_t*)&any)[indices], indices)... } {
 		}
 
@@ -681,7 +716,7 @@ namespace _lxy_oxor_any_ {
 	public:
 
 		template<size_t... indices>
-		OXORANY_FORCEINLINE constexpr oxor_any(any_t any, indexSequence<indices...>) :
+		OXORANY_FORCEINLINE constexpr oxor_any(any_t any, _lxy_::index_sequence<indices...>) :
 			buffer{ encrypt_byte<key>(reinterpret_cast<uint8_t*>(&any)[indices], indices)... } {
 		}
 
