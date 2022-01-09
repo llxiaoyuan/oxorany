@@ -61,13 +61,50 @@ SOFTWARE.
 
 #ifdef _DEBUG
 #define oxorany
-#define oxorvar
 #else
-#define oxorany(any) _lxy_oxor_any_::oxor_any<decltype(_lxy_oxor_any_::typeofs(any)), _lxy_oxor_any_::array_size(any), __COUNTER__>(any, _lxy_::make_index_sequence<sizeof(decltype(any))>()).get()
-#define oxorvar(var) ((var) + oxorany(0))
+#define oxorany_old(any) _lxy_oxor_any_::oxor_any<decltype(_lxy_oxor_any_::typeofs(any)), _lxy_oxor_any_::array_size(any), __COUNTER__>(any, _lxy_::make_index_sequence<sizeof(decltype(any))>()).get()
+
+#ifdef OXORANY_USE_BIT_CAST
+#define oxorany(any) _lxy_::_Bit_cast<decltype(any)>(oxorany_old((_lxy_::integral_constant<typename _lxy_::type_cast<decltype(any)>::type,_lxy_::_Bit_cast<typename _lxy_::type_cast<decltype(any)>::type>(any) >::value)))
+#else
+#define oxorany oxorany_old
+#endif // OXORANY_USE_BIT_CAST
+
 #endif
 
 namespace _lxy_ {
+
+	template<typename T>
+	struct type_cast { using type = T; };
+
+	template<>
+	struct type_cast<float> { using type = uint32_t; };
+
+	template<>
+	struct type_cast<double> { using type = uint64_t; };
+
+	template <class _Ty, _Ty _Val>
+	struct integral_constant {
+		static constexpr _Ty value = _Val;
+
+		using value_type = _Ty;
+		using type = integral_constant;
+
+		constexpr operator value_type() const noexcept {
+			return value;
+		}
+
+		_NODISCARD constexpr value_type operator()() const noexcept {
+			return value;
+		}
+	};
+
+#ifdef OXORANY_USE_BIT_CAST
+	template <class _To, class _From>
+	_NODISCARD constexpr _To _Bit_cast(const _From& _Val) noexcept {
+		return __builtin_bit_cast(_To, _Val);
+	}
+#endif
 
 	// https://stackoverflow.com/a/32223343/16602611
 
