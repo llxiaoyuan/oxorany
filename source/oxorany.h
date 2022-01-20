@@ -56,7 +56,7 @@ SOFTWARE.
 #ifdef _MSC_VER
 #define OXORANY_FORCEINLINE __forceinline
 #else
-#define OXORANY_FORCEINLINE __attribute__((always_inline))
+#define OXORANY_FORCEINLINE __attribute__((always_inline)) inline
 #endif
 
 #ifdef _DEBUG
