@@ -715,7 +715,7 @@ namespace _lxy_oxor_any_ {
 		}
 
 #else
-		for (_lxy__size_t i = 0; i < size; i++) {
+		for (volatile _lxy__size_t i = 0; i < size; i++) {
 			buffer[i] = decrypt_byte<key>(buffer[i], i);
 		}
 #endif // OXORANY_DISABLE_OBFUSCATION
