@@ -105,7 +105,7 @@ namespace _lxy_ {
 
 #ifdef OXORANY_USE_BIT_CAST
 	template <class _To, class _From>
-	_NODISCARD constexpr _To _Bit_cast(const _From& _Val) noexcept {
+	/*_NODISCARD*/ constexpr _To _Bit_cast(const _From& _Val) noexcept {
 		return __builtin_bit_cast(_To, _Val);
 	}
 #endif
