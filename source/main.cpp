@@ -25,8 +25,8 @@ int main() {
     //       , oxorany(0x1234)                                                          //int16_t
     //       , oxorany(0x12345678)                                                      //int32_t
     //       , oxorany(0x1234567887654321)                                              //int64_t
-    //       , oxorany(1.0f)                                                            //float
-    //       , oxorany(2.0)                                                             //double
+    //       , oxorany_flt(1.0f)                                                            //float
+    //       , oxorany_flt(2.0)                                                             //double
 
     //       , oxorany("string")                                                        //string
     //       , oxorany(u8"u8 string")                                                   //u8 string
@@ -35,5 +35,5 @@ int main() {
     //       , oxorany(LR"(raw wstring)")                                               //raw wstring
     //       , oxorany("\x61\x62\x63\x64")                                              //binary data
     //);
-    return (int)oxorany(3.0f) + (int)oxorany(6.0);
+    return (int)oxorany_flt(3.0f) + (int)oxorany_flt(6.0);
 }

@@ -68,12 +68,10 @@ typedef size_t _lxy__size_t;
 #ifdef _DEBUG
 #define oxorany
 #else
-#define oxorany_old(any) _lxy_oxor_any_::oxor_any<decltype(_lxy_oxor_any_::typeofs(any)), _lxy_oxor_any_::array_size(any), __COUNTER__>(any, _lxy_::make_index_sequence<sizeof(decltype(any))>()).get()
+#define oxorany(any) _lxy_oxor_any_::oxor_any<decltype(_lxy_oxor_any_::typeofs(any)), _lxy_oxor_any_::array_size(any), __COUNTER__>(any, _lxy_::make_index_sequence<sizeof(decltype(any))>()).get()
 
 #ifdef OXORANY_USE_BIT_CAST
-#define oxorany(any) _lxy_::_Bit_cast<decltype(any)>(oxorany_old((_lxy_::integral_constant<typename _lxy_::type_cast<decltype(any)>::type,_lxy_::_Bit_cast<typename _lxy_::type_cast<decltype(any)>::type>(any) >::value)))
-#else
-#define oxorany oxorany_old
+#define oxorany_flt(any) _lxy_::_Bit_cast<decltype(any)>(oxorany((_lxy_::integral_constant<typename _lxy_::type_cast<decltype(any)>::type,_lxy_::_Bit_cast<typename _lxy_::type_cast<decltype(any)>::type>(any)>::value)))
 #endif // OXORANY_USE_BIT_CAST
 
 #endif
