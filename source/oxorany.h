@@ -67,6 +67,7 @@ typedef size_t _lxy__size_t;
 
 #ifdef _DEBUG
 #define oxorany
+#define oxorany_flt
 #else
 #define oxorany(any) _lxy_oxor_any_::oxor_any<decltype(_lxy_oxor_any_::typeofs(any)), _lxy_oxor_any_::array_size(any), __COUNTER__>(any, _lxy_::make_index_sequence<sizeof(decltype(any))>()).get()
 
