@@ -36,11 +36,11 @@ typedef UINT32 _lxy__uint32_t;
 typedef UINT64 _lxy__uint64_t;
 typedef SIZE_T _lxy__size_t;
 #else
-#include <stdint.h>
-typedef uint8_t _lxy__uint8_t;
-typedef uint32_t _lxy__uint32_t;
-typedef uint64_t _lxy__uint64_t;
-typedef size_t _lxy__size_t;
+#include <cstdint>
+using _lxy__uint8_t = uint8_t;
+using _lxy__uint32_t = uint32_t;
+using _lxy__uint64_t = uint64_t;
+using _lxy__size_t = size_t;
 #endif
 
 #if _WIN32 || _WIN64
