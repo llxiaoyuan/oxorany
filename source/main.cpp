@@ -33,6 +33,11 @@ int main() {
     //       , WRAPPER_MARCO("\x61\x62\x63\x64")                                              //binary data
     //);
 
+    WRAPPER_MARCO_DEFINE_ARRAY(char, name_a, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+    WRAPPER_MARCO_DEFINE_ARRAY(wchar_t, name_w, L"wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
+    printf("%s\n", name_a);
+    printf("%S\n", name_w);
+
     printf(WRAPPER_MARCO("%d\n"), WRAPPER_MARCO(3) + (int)WRAPPER_MARCO_FLT(6.0));
     return 0;
 }
