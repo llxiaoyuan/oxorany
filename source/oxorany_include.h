@@ -1,6 +1,7 @@
-#ifndef OXORANY_PREDEF_H
-#define OXORANY_PREDEF_H
+#ifndef OXORANY_INCLUDE_H
+#define OXORANY_INCLUDE_H
 
+//disable /GL for warning C4307 in msvc
 #define OXORANY_DISABLE_OBFUSCATION
 //use OXORANY_USE_BIT_CAST for remove float double src data
 #define OXORANY_USE_BIT_CAST
