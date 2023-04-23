@@ -13,7 +13,7 @@
 #define WRAPPER_MARCO_FLT oxorany_flt
 
 template <typename T>
-static OXORANY_FORCEINLINE void copy_string_without_result(T* target, const T* source)
+static OXORANY_FORCEINLINE void copy_string_without_return(T* target, const T* source)
 {
 	while (*source) {
 		*target = *source;
@@ -23,6 +23,6 @@ static OXORANY_FORCEINLINE void copy_string_without_result(T* target, const T* s
 	*target = 0;
 }
 
-#define WRAPPER_MARCO_DEFINE_ARRAY(type,name,s) type name[sizeof(s)/sizeof(type)]; copy_string_without_result(name, WRAPPER_MARCO(s))
+#define WRAPPER_MARCO_DEFINE_ARRAY(type,name,s) type name[sizeof(s)/sizeof(type)]; copy_string_without_return(name, WRAPPER_MARCO(s))
 
 #endif
