@@ -23,10 +23,6 @@ static OXORANY_FORCEINLINE void copy_string_without_return(T* target, const T* s
 	*target = 0;
 }
 
-#define OXORANY_ARRAY_SIZE(a) (sizeof(a) / sizeof(*a))
-
-#define OXORANY_STRING_LENGTH(s) ((OXORANY_ARRAY_SIZE(s))-1)
-
 #define WRAPPER_MARCO_DEFINE_STRING_ARRAY(type,name,s) type name[sizeof(s)/sizeof(type)]; copy_string_without_return(name, WRAPPER_MARCO(s))
 
 #endif
