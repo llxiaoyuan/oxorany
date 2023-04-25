@@ -233,7 +233,8 @@ namespace _lxy_oxor_any_ {
 		_lxy__size_t a = c;
 		_lxy__size_t b = i + key;
 		//_lxy__size_t a_xor_b = (a + b) - 2 * (a & b);
-		_lxy__size_t a_xor_b = (a + b) - ((a & b) + (b & a));
+		//_lxy__size_t a_xor_b = (a + b) - ((a & b) + (b & a));
+		_lxy__size_t a_xor_b = (a + b) - (a & b) - (b & a);
 		return static_cast<_lxy__uint8_t>((a_xor_b)-(key * 7));
 	}
 
@@ -733,7 +734,7 @@ namespace _lxy_oxor_any_ {
 
 		static constexpr _lxy__size_t key = random_constant<counter^ base_key, (size^ base_key) % 128>::value;
 
-		_lxy__uint8_t buffer[size];
+		alignas(0x10) _lxy__uint8_t buffer[size];
 
 	public:
 
@@ -753,7 +754,7 @@ namespace _lxy_oxor_any_ {
 
 		static constexpr _lxy__size_t key = random_constant<counter^ base_key, (size^ base_key) % 128>::value;
 
-		_lxy__uint8_t buffer[size];
+		alignas(0x10) _lxy__uint8_t buffer[size];
 
 	public:
 
